@@ -6,8 +6,8 @@
   "scripts": {
     "webpack": "webpack",
     "webpack-dev-server": "webpack-dev-server",
-    "dev": "npm run webpack-dev-server -- --mode development",
-    "prod": "npm run webpack -- --mode production"
+    "dev": "npm run webpack-dev-server -- --config webpack.dev.js",
+    "prod": "npm run webpack -- --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
     "style-loader": "^0.21.0",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.3"
   }
 }
