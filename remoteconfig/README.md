@@ -9,4 +9,4 @@
 - Use `python upload-config.py` to upload the changed community.json
 
 ### Access Config
-- `community.json` will be available to read at `https://storage.googleapis.com/remoteconfig/community.json` :beer:
+- `community.json` will be available to read at [https://storage.googleapis.com/remoteconfig/community.json](https://storage.googleapis.com/remoteconfig/community.json) :beer:
