@@ -37,14 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users',
     'rest_framework_docs',
 
     'django.contrib.sites', # new
     'allauth', # new
     'allauth.account', # new
     'allauth.socialaccount', # new
-    'allauth.socialaccount.providers.github' # new
+    'allauth.socialaccount.providers.github', # new
+
+    'rest_framework',
+    'snippets.apps.SnippetsConfig'
+
 ]
 
 MIDDLEWARE = [
@@ -92,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'community',
         'USER': 'communityuser',
-        'PASSWORD': 'password',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -150,4 +153,4 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
-AUTH_USER_MODEL = 'users.CustomUser'
+# AUTH_USER_MODEL = 'users.CustomUser'
