@@ -37,18 +37,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework_docs',
-
-    'django.contrib.sites', # new
-    'allauth', # new
-    'allauth.account', # new
-    'allauth.socialaccount', # new
-    'allauth.socialaccount.providers.github', # new
-
     'rest_framework',
+    'rest_framework.authtoken',
     'snippets.apps.SnippetsConfig'
 
 ]
+from .csrfsession import CsrfExemptSessionAuthentication
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -140,11 +146,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTHENTICATION_BACKENDS = (
-    "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
-
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
@@ -153,4 +154,7 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+import datetime
+TOKEN_EXPIRE_TIME=datetime.timedelta(days=30)
 # AUTH_USER_MODEL = 'users.CustomUser'
