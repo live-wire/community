@@ -31,14 +31,17 @@ from accounts.views import login, sample_api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^', include('snippets.urls')),
     url(r'^docs/', include_docs_urls(title='My API title', public=False, authentication_classes=[],
                                     permission_classes=[])),
-    path('api/sampleapi', sample_api)
+    path('api/sampleapi', sample_api),
+    path ('auth/login', login),
+
+    url(r'^', include('institution.urls')),
+    url(r'^', include('course.urls')),
+    url(r'^', include('announcement.urls'))
 ]
 
 urlpatterns += [
     url(r'^api-auth/', include('rest_framework.urls')),
 ]
 
-urlpatterns += [ path ('auth/login', login) ]

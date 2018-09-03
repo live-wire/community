@@ -39,8 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'snippets.apps.SnippetsConfig'
-
+    # 'snippets.apps.SnippetsConfig',
+    'institution.apps.InstitutionConfig',
+    'course.apps.CourseConfig',
+    'announcement.apps.AnnouncementConfig',
+    'student.apps.StudentConfig',
+    'teacher.apps.TeacherConfig',
+    'admin_user.apps.AdminUserConfig'
 ]
 from .csrfsession import CsrfExemptSessionAuthentication
 
