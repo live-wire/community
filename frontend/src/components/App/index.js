@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
+import Login from '../Login';
 
 const App = () => (
   <div>
-    Hello Community
+    <Login />
   </div>
 );
 
