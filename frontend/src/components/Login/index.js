@@ -5,7 +5,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
+      user: '',
       password: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -27,32 +27,47 @@ class Login extends Component {
     return value.length > 0;
   }
 
+  isValidEmail(value) {
+    const reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+    return reg.test(value);
+  }
+
   isValidPassword(value) {
     return value.length > 0;
   }
 
+  isValidUser(val) {
+    if(val.includes('@')) {
+      return this.isValidEmail(val);
+    }
+    else {
+      return this.isValidUsername(val);
+    }
+  }
+
   canBeSubmitted() {
-    const {username, password} = this.state;
-    return this.isValidUsername(username) && this.isValidPassword(password);
+    const {user, password} = this.state;
+    return this.isValidUser(user) && this.isValidPassword(password);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('Submit');
+    console.log(this.state);
   }
 
   render() {
-    const {username, password} = this.state;
+    const {user, password} = this.state;
     const isEnabled = this.canBeSubmitted();
 
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit} >
-          <input name="username"
-            placeholder="Username"
+          <input name="user"
+            placeholder="Username or Email"
             type="text"
-            value={username}
-            onChange={this.handleInputChange} />
+            value={user}
+            onChange={this.handleInputChange}
+            autoComplete="off" />
           <input name="password"
             placeholder="Password"
             type="password"
