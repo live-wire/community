@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './style.css';
+import {isValidUser, isValidPassword} from '../../helpers'
 
 class Login extends Component {
   constructor(props) {
@@ -23,31 +24,9 @@ class Login extends Component {
     });
   }
 
-  isValidUsername(value) {
-    return value.length > 0;
-  }
-
-  isValidEmail(value) {
-    const reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    return reg.test(value);
-  }
-
-  isValidPassword(value) {
-    return value.length > 0;
-  }
-
-  isValidUser(val) {
-    if(val.includes('@')) {
-      return this.isValidEmail(val);
-    }
-    else {
-      return this.isValidUsername(val);
-    }
-  }
-
   canBeSubmitted() {
     const {user, password} = this.state;
-    return this.isValidUser(user) && this.isValidPassword(password);
+    return isValidUser(user) && isValidPassword(password);
   }
 
   handleSubmit(event) {
