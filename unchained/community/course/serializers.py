@@ -22,19 +22,18 @@ from .models import Course
 
 
 # class CustomNestedNameserverSerializer(NestedHyperlinkedModelSerializer):
-#     def build_url_field(self, field_name, model_class):
-#         field_class, field_kwargs = super().build_url_field(
-#             field_name, model_class)
-#         if hasattr(self, 'url_view_name'):
-#             field_kwargs['view_name'] = self.url_view_name
-#         return field_class, field_kwargs
+#	 def build_url_field(self, field_name, model_class):
+#		 field_class, field_kwargs = super().build_url_field(
+#			 field_name, model_class)
+#		 if hasattr(self, 'url_view_name'):
+#			 field_kwargs['view_name'] = self.url_view_name
+#		 return field_class, field_kwargs
 
 
 class CourseSerializer(serializers.HyperlinkedModelSerializer):
 	announcements = serializers.HyperlinkedRelatedField(many=True, view_name='announcement-detail', read_only=True)
 	# instructors = serializers.HyperlinkedRelatedField(many=True, view_name='teacher-detail', read_only=True)
-	# students = serializers.HyperlinkedRelatedField(many=True, view_name='student-detail', read_only=True)
 
 	class Meta:
 		model = Course
-		fields = ('title', 'id', 'code', 'institution', 'announcements')
+		fields = ('title', 'id', 'code', 'institution', 'announcements', 'student_set', 'teacher_set')

@@ -7,6 +7,5 @@ class Course(models.Model):
 	title = models.CharField(max_length=100, blank=False)
 	code = models.CharField(max_length=20, blank=True, default='')
 	institution = models.ForeignKey('institution.Institution', related_name='courses', on_delete=models.CASCADE)
-
 	class Meta:
 		ordering = ('created',)
