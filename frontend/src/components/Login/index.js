@@ -13,7 +13,8 @@ class Login extends Component {
     super(props);
     this.state = {
       user: '',
-      password: ''
+      password: '',
+      error: null
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -47,18 +48,20 @@ class Login extends Component {
 
     fakeAuth.login()
     .then(res => {
-      console.log('Login successful');
+      history.push(routes.HOME);
     })
     .catch(err => {
-      console.log('Login unsuccessful');
+      this.setState({
+        error: err
+      })
     });
-    //history.push(routes.HOME);
   }
 
   render() {
     const {
       user,
-      password
+      password,
+      error
     } = this.state;
     const isEnabled = this.canBeSubmitted();
 
@@ -85,6 +88,7 @@ class Login extends Component {
             value="Login"
             disabled={!isEnabled}
           />
+          {error && <p>{error.message}</p>}
         </form>
       </div>
     );

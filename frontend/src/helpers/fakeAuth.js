@@ -1,12 +1,27 @@
+const error = {
+  message: 'Please try again'
+};
+
+const random = () => {
+  const values = [false, true];
+  const index = Math.round(Math.random());
+  return values[index];
+}
+
 const wait = time => new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve();
+      if(random()) {
+        resolve();
+      }
+      else{
+        reject(error);
+      }
     }, time);
   }
 );
 
 const login = () => {
-  return wait(5000);
+  return wait(2000);
 }
 
 const logout = () => {
