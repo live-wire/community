@@ -35,7 +35,7 @@ urlpatterns = [
                                     permission_classes=[])),
     path('api/sampleapi', sample_api),
     path ('auth/login', login),
-
+    path('redocs/', include('redocs.urls')),
     url(r'^', include('institution.urls')),
     url(r'^', include('course.urls')),
     url(r'^', include('announcement.urls')),
