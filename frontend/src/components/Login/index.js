@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import './style.css';
-import {isValidUser, isValidPassword} from '../../helpers'
+import {
+  isValidUser,
+  isValidPassword
+} from '../../helpers/validations';
 
 class Login extends Component {
   constructor(props) {
@@ -25,7 +28,11 @@ class Login extends Component {
   }
 
   canBeSubmitted() {
-    const {user, password} = this.state;
+    const {
+      user,
+      password
+    } = this.state;
+    
     return isValidUser(user) && isValidPassword(password);
   }
 
@@ -35,24 +42,35 @@ class Login extends Component {
   }
 
   render() {
-    const {user, password} = this.state;
+    const {
+      user,
+      password
+    } = this.state;
     const isEnabled = this.canBeSubmitted();
 
     return (
       <div className="Login">
-        <form onSubmit={this.handleSubmit} >
-          <input name="user"
+        <form onSubmit={this.handleSubmit}>
+          <input
+            name="user"
             placeholder="Username or Email"
             type="text"
             value={user}
             onChange={this.handleInputChange}
-            autoComplete="off" />
-          <input name="password"
+            autoComplete="off"
+          />
+          <input
+            name="password"
             placeholder="Password"
             type="password"
             value={password}
-            onChange={this.handleInputChange} />
-          <input type="submit" value="Login" disabled={!isEnabled} />
+            onChange={this.handleInputChange}
+          />
+          <input
+            type="submit"
+            value="Login"
+            disabled={!isEnabled}
+          />
         </form>
       </div>
     );
