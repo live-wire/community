@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import './style.css';
+import * as routes from '../../constants/routes';
+import {withRouter} from 'react-router-dom';
 import {
   isValidUser,
   isValidPassword
 } from '../../helpers/validations';
+import fakeAuth from '../../helpers/fakeAuth';
 
 class Login extends Component {
   constructor(props) {
@@ -32,13 +35,24 @@ class Login extends Component {
       user,
       password
     } = this.state;
-    
+
     return isValidUser(user) && isValidPassword(password);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    const {
+      history
+    } = this.props;
+
+    fakeAuth.login()
+    .then(res => {
+      console.log('Login successful');
+    })
+    .catch(err => {
+      console.log('Login unsuccessful');
+    });
+    //history.push(routes.HOME);
   }
 
   render() {
@@ -77,4 +91,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
