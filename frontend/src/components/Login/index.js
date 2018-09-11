@@ -1,11 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './style.css';
 import * as routes from '../../constants/routes';
-import {withRouter} from 'react-router-dom';
-import {
-	isValidUser,
-	isValidPassword
-} from '../../helpers/validations';
+import { withRouter } from 'react-router-dom';
+import { isValidUser, isValidPassword } from '../../helpers/validations';
 import fakeAuth from '../../helpers/fakeAuth';
 
 class Login extends Component {
@@ -21,10 +18,7 @@ class Login extends Component {
 	}
 
 	handleInputChange(event) {
-		const {
-			value,
-			name
-		} = event.target;
+		const { value, name } = event.target;
 
 		this.setState({
 			[name]: value
@@ -32,37 +26,29 @@ class Login extends Component {
 	}
 
 	canBeSubmitted() {
-		const {
-			user,
-			password
-		} = this.state;
+		const { user, password } = this.state;
 
 		return isValidUser(user) && isValidPassword(password);
 	}
 
 	handleSubmit(event) {
 		event.preventDefault();
-		const {
-			history
-		} = this.props;
+		const { history } = this.props;
 
-		fakeAuth.login()
-		.then(res => {
-			history.push(routes.HOME);
-		})
-		.catch(err => {
-			this.setState({
-				error: err
+		fakeAuth
+			.login()
+			.then(res => {
+				history.push(routes.HOME);
 			})
-		});
+			.catch(err => {
+				this.setState({
+					error: err
+				});
+			});
 	}
 
 	render() {
-		const {
-			user,
-			password,
-			error
-		} = this.state;
+		const { user, password, error } = this.state;
 		const isEnabled = this.canBeSubmitted();
 
 		return (
@@ -83,11 +69,7 @@ class Login extends Component {
 						value={password}
 						onChange={this.handleInputChange}
 					/>
-					<input
-						type="submit"
-						value="Login"
-						disabled={!isEnabled}
-					/>
+					<input type="submit" value="Login" disabled={!isEnabled} />
 					{error && <p>{error.message}</p>}
 				</form>
 			</div>

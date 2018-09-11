@@ -13,16 +13,13 @@ class Signup extends React.Component {
 			username: '',
 			passwordOne: '',
 			passwordTwo: ''
-		}
+		};
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleInputChange(event) {
-		const {
-			value,
-			name
-		} = event.target;
+		const { value, name } = event.target;
 
 		this.setState({
 			[name]: value
@@ -35,26 +32,18 @@ class Signup extends React.Component {
 	}
 
 	canBeSubmitted() {
-		const {
-			email,
-			username,
-			passwordOne,
-			passwordTwo
-		} = this.state;
+		const { email, username, passwordOne, passwordTwo } = this.state;
 
-		return isValidUsername(username) &&
-		isValidEmail(email) &&
-		isValidPassword(passwordOne) &&
-		passwordOne === passwordTwo;
+		return (
+			isValidUsername(username) &&
+			isValidEmail(email) &&
+			isValidPassword(passwordOne) &&
+			passwordOne === passwordTwo
+		);
 	}
 
 	render() {
-		const {
-			email,
-			username,
-			passwordOne,
-			passwordTwo
-		} = this.state;
+		const { email, username, passwordOne, passwordTwo } = this.state;
 
 		const isEnabled = this.canBeSubmitted();
 
@@ -88,11 +77,7 @@ class Signup extends React.Component {
 					type="password"
 					placeholder="Confirm Password"
 				/>
-				<input
-					value="Sign Up"
-					type="submit"
-					disabled={!isEnabled}
-				/>
+				<input value="Sign Up" type="submit" disabled={!isEnabled} />
 			</form>
 		);
 	}
