@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Landing = () => (
-  <div>
-    Landing
-  </div>
+	<div>
+		Landing
+	</div>
 );
 
 export default Landing;
