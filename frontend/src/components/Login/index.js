@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './style.css';
-import * as routes from '../../constants/routes';
 import { withRouter } from 'react-router-dom';
+
+import styles from './login.style.css';
+import * as routes from '../../constants/routes';
 import { isValidUser, isValidPassword } from '../../helpers/validations';
 import fakeAuth from '../../helpers/fakeAuth';
 
@@ -52,9 +53,10 @@ class Login extends Component {
 		const isEnabled = this.canBeSubmitted();
 
 		return (
-			<div className="Login">
+			<div>
 				<form onSubmit={this.handleSubmit}>
 					<input
+						className={styles.red}
 						name="user"
 						placeholder="Username or Email"
 						type="text"
