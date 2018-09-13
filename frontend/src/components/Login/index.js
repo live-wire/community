@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import styles from './login.style.css';
 import * as routes from '../../constants/routes';
 import { isValidUser, isValidPassword } from '../../helpers/validations';
 import fakeAuth from '../../helpers/fakeAuth';
@@ -56,7 +55,6 @@ class Login extends Component {
 			<div>
 				<form onSubmit={this.handleSubmit}>
 					<input
-						className={styles.red}
 						name="user"
 						placeholder="Username or Email"
 						type="text"

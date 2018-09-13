@@ -1,10 +1,26 @@
 // /*
 // 	Basic framework to follow
 // 	Do not add anything to this file unless absolutely necessary
-// 	If you add anything, please comment your name before the custom style added
-// 	or Use Component Level Styles instead, cause it's not 2012 anymore
+// 	Use Component Level Styles instead, cause it's not 2012 anymore
 // */
-//
+
+html {
+	height: 100%;
+	// margin: auto;
+	// min-width: 500px;
+	// max-width: 1920px;
+}
+
+body {
+	margin: 0;
+	color: $color-dark-gray;
+	font-size: 14px;
+	min-height: 100%;
+	// line-height: 26px;
+	font-weight: normal;
+	background-color: $color-light-gray;
+}
+
 // html {
 // 	height: 100%;
 // 	margin: auto;
