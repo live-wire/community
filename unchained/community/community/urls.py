@@ -41,7 +41,8 @@ urlpatterns = [
     url(r'^', include('announcement.urls')),
     url(r'^', include('student.urls')),
     url(r'^', include('teacher.urls')),
-    url(r'^', include('admin_user.urls'))
+    url(r'^', include('admin_user.urls')),
+    url(r'^', include('file_upload.urls'))
 ]
 
 urlpatterns += [

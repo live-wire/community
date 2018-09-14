@@ -39,13 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'sorl.thumbnail',
     # 'snippets.apps.SnippetsConfig',
     'institution.apps.InstitutionConfig',
     'course.apps.CourseConfig',
     'announcement.apps.AnnouncementConfig',
     'student.apps.StudentConfig',
     'teacher.apps.TeacherConfig',
-    'admin_user.apps.AdminUserConfig'
+    'admin_user.apps.AdminUserConfig',
+    'file_upload.apps.FileUploadConfig'
 ]
 from .csrfsession import CsrfExemptSessionAuthentication
 
@@ -111,6 +113,12 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+# Google cloud buckets
+# Set an environment variable of GOOGLE_APPLICATION_CREDENTIALS to path of the google credentials json file.
+
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = 'communitystorage'
 
 
 # Password validation

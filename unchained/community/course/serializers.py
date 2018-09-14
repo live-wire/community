@@ -32,8 +32,7 @@ from .models import Course
 
 class CourseSerializer(serializers.HyperlinkedModelSerializer):
 	announcements = serializers.HyperlinkedRelatedField(many=True, view_name='announcement-detail', read_only=True)
-	# instructors = serializers.HyperlinkedRelatedField(many=True, view_name='teacher-detail', read_only=True)
-
 	class Meta:
 		model = Course
-		fields = ('title', 'id', 'code', 'institution', 'announcements', 'student_set', 'teacher_set')
+		fields = ('title', 'id', 'url', 'code', 'institution', 'announcements', 'file_uploads',
+				'student_set', 'teacher_set', 'image', 'cover_image')

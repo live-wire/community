@@ -4,7 +4,7 @@ from django.db import models
 class Institution(models.Model):
 	owner = models.ForeignKey('auth.User', related_name='institution', on_delete=models.SET_NULL, null=True)
 	created = models.DateTimeField(auto_now_add=True)
-	title = models.CharField(max_length=100, blank=True, default='')
+	title = models.CharField(max_length=100, blank=False, unique=True)
 	detail = models.TextField()
 
 	def __str__(self):

@@ -1,0 +1,3 @@
+[
+  "institution/tests.py::InstitutionTestCase::test_institution_object_string"
+]

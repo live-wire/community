@@ -17,10 +17,10 @@ from .models import Institution
 #		 fields = ('id', 'username', 'snippets')
 
 class InstitutionSerializer(serializers.HyperlinkedModelSerializer):
-	courses = serializers.HyperlinkedRelatedField(many=True, view_name='course-detail', read_only=True)
-	students = serializers.HyperlinkedRelatedField(many=True, view_name='student-detail', read_only=True)
-	teachers = serializers.HyperlinkedRelatedField(many=True, view_name='teacher-detail', read_only=True)
-	admin_users = serializers.HyperlinkedRelatedField(many=True, view_name='admin_user-detail', read_only=True)
+	# courses = serializers.HyperlinkedRelatedField(many=True, view_name='course-detail', read_only=True)
+	# students = serializers.HyperlinkedRelatedField(many=True, view_name='student-detail', read_only=True)
+	# teachers = serializers.HyperlinkedRelatedField(many=True, view_name='teacher-detail', read_only=True)
+	# admin_users = serializers.HyperlinkedRelatedField(many=True, view_name='admin_user-detail', read_only=True)
 	class Meta:
 		model = Institution
 		fields = ('id', 'detail', 'url', 'owner', 'title', 'courses', 'students', 'teachers', 'admin_users')
