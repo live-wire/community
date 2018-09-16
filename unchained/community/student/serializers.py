@@ -11,4 +11,5 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
 
 	class Meta:
 		model = Student
-		fields = ('id', 'url', 'user', 'department', 'institution', 'courses')
+		fields = ('id', 'url', 'user', 'department', 'institution', 'courses', 'uid')
+		read_only_fields = ('institution', 'user')

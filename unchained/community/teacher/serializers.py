@@ -10,4 +10,5 @@ class TeacherSerializer(serializers.HyperlinkedModelSerializer):
 
 	class Meta:
 		model = Teacher
-		fields = ('id', 'url', 'user', 'department', 'institution', 'courses')
+		fields = ('id', 'url', 'user', 'department', 'institution', 'courses', 'uid')
+		read_only_fields = ('institution', 'user', 'courses')
