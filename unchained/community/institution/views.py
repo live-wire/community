@@ -31,15 +31,25 @@ class InstitutionViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
     authentication_classes = (CsrfExemptSessionAuthentication, )
 
+    # def list(self, request, *args, **kwargs):
+    #     print('list institutions', request.user)
+    #     # queryset = Institution.objects.all()
+    #     # serializer_context = {
+    #     #     'request': Request(request._request),
+    #     # }
+    #     # serializer = InstitutionSerializer(queryset, many=True, context=serializer_context)
+    #     return super().list(self, request, *args, **kwargs)
+    #     # return Response(serializer.data)
+
     def retrieve(self, request, *args, **kwargs):
         if not belongsToInstitution(request, self.get_object()):
             raise PermissionDenied(detail='User does not belong to the institution', code=None)
-        return super().retrieve(self, request, *args, **kwargs)
+        return super(InstitutionViewSet, self).retrieve(request, *args, **kwargs)
 
     def update(self, request, *args, **kwargs):
         if not isInstitutionAdmin(request, self.get_object()):
             raise PermissionDenied(detail='User is not an admin_user', code=None)
-        return super().retrieve(self, request, *args, **kwargs)
+        return super(InstitutionViewSet, self).retrieve(request, *args, **kwargs)
 
 
     def get_permissions(self):

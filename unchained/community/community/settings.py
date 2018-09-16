@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'announcement.apps.AnnouncementConfig',
     'student.apps.StudentConfig',
     'teacher.apps.TeacherConfig',
-    'admin_user.apps.AdminUserConfig',
+    'administrator.apps.AdministratorConfig',
     'file_upload.apps.FileUploadConfig'
 ]
 from .csrfsession import CsrfExemptSessionAuthentication

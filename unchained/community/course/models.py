@@ -1,7 +1,6 @@
 from django.db import models
 from community.validators import validate_image_file_extension
 import os
-
 from PIL import Image as Img
 from io import StringIO
 
@@ -16,7 +15,6 @@ class Course(models.Model):
 	institution = models.ForeignKey('institution.Institution', related_name='courses', on_delete=models.CASCADE)
 	image = models.FileField(upload_to=get_upload_path, validators = [validate_image_file_extension], blank=True)
 	cover_image = models.FileField(upload_to=get_upload_path, validators = [validate_image_file_extension], blank=True)
-
 	def __str__(self):
 		return '%s - %s' % (self.code, self.title)
 	

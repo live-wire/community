@@ -8,3 +8,4 @@ class FileUploadSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = FileUpload
 		fields = ('title', 'url', 'id', 'course', 'course_id', 'institution', 'institution_id', 'description', 'file')
+		read_only_fields = ('institution', 'course')

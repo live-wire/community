@@ -24,3 +24,5 @@ class FileUpload(models.Model):
 			super(FileUpload, self).save(*args, **kwargs)
 	class Meta:
 		ordering = ('created',)
+	def __str__(self):
+		return '%s - %s' % (self.course.title, self.title)

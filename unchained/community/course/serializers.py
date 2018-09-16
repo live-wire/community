@@ -29,10 +29,16 @@ from .models import Course
 #			 field_kwargs['view_name'] = self.url_view_name
 #		 return field_class, field_kwargs
 
+class CourseListSerializer(serializers.HyperlinkedModelSerializer):
+	class Meta:
+		model = Course
+		fields = ('title', 'id', 'url', 'code', 'institution')
+		read_only_fields = ('institution', )
 
 class CourseSerializer(serializers.HyperlinkedModelSerializer):
-	announcements = serializers.HyperlinkedRelatedField(many=True, view_name='announcement-detail', read_only=True)
+	# announcements = serializers.HyperlinkedRelatedField(many=True, view_name='announcement-detail', read_only=True)
 	class Meta:
 		model = Course
 		fields = ('title', 'id', 'url', 'code', 'institution', 'announcements', 'file_uploads',
 				'student_set', 'teacher_set', 'image', 'cover_image')
+		read_only_fields = ('institution', )

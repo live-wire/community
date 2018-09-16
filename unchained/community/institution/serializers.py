@@ -16,6 +16,12 @@ from .models import Institution
 #		 model = User
 #		 fields = ('id', 'username', 'snippets')
 
+class InstitutionListSerializer(serializers.HyperlinkedModelSerializer):
+	class Meta:
+		model = Institution
+		fields = ('id', 'url', 'title')
+
+
 class InstitutionSerializer(serializers.HyperlinkedModelSerializer):
 	# courses = serializers.HyperlinkedRelatedField(many=True, view_name='course-detail', read_only=True)
 	# students = serializers.HyperlinkedRelatedField(many=True, view_name='student-detail', read_only=True)
@@ -23,7 +29,7 @@ class InstitutionSerializer(serializers.HyperlinkedModelSerializer):
 	# admin_users = serializers.HyperlinkedRelatedField(many=True, view_name='admin_user-detail', read_only=True)
 	class Meta:
 		model = Institution
-		fields = ('id', 'detail', 'url', 'owner', 'title', 'courses', 'students', 'teachers', 'admin_users')
+		fields = ('id', 'detail', 'url', 'owner', 'title', 'courses', 'students', 'teachers', 'administrators')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
