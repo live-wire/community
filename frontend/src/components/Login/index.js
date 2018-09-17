@@ -62,6 +62,9 @@ class Login extends Component {
 						onChange={this.handleInputChange}
 						autoComplete="off"
 					/>
+					<h1>Heading 1</h1>
+					<p>Test Passage4</p>
+					<a href="asas">hyperlink</a>
 					<input
 						name="password"
 						placeholder="Password"
