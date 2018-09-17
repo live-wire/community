@@ -1,3 +1,25 @@
 // -----------------------------------------------------------------------------
 // This file contains CSS helper classes.
 // -----------------------------------------------------------------------------
+
+.input {
+	width: 100%;
+	border: none;
+	font-size: 12px;
+	padding: 5px 10px;
+	border-radius: 10px;
+	background-color: #fff;
+	margin-top: 16px;
+	margin-bottom: 8px;
+}
+
+.input-underlined {
+	width: 100%;
+	border: none;
+	font-size: 12px;
+	padding: 5px 0;
+	background-color: transparent;
+	border-bottom: 1px solid $color-divider-gray;
+	margin-top: 16px;
+	margin-bottom: 8px;
+}

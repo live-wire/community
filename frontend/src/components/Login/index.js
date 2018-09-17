@@ -52,28 +52,35 @@ class Login extends Component {
 		const isEnabled = this.canBeSubmitted();
 
 		return (
-			<div>
+			<div className="Login">
 				<form onSubmit={this.handleSubmit}>
-					<input
-						name="user"
-						placeholder="Username or Email"
-						type="text"
-						value={user}
-						onChange={this.handleInputChange}
-						autoComplete="off"
-					/>
-					<h1>Heading 1</h1>
-					<p>Test Passage4</p>
-					<a href="asas">hyperlink</a>
-					<input
-						name="password"
-						placeholder="Password"
-						type="password"
-						value={password}
-						onChange={this.handleInputChange}
-					/>
-					<input type="submit" value="Login" disabled={!isEnabled} />
-					{error && <p>{error.message}</p>}
+					<div>
+						<input
+							name="user"
+							className="input-underlined"
+							placeholder="Username or Email"
+							type="text"
+							value={user}
+							onChange={this.handleInputChange}
+							autoComplete="off"
+						/>
+					</div>
+					<div>
+						<input
+							name="password"
+							className="input-underlined"
+							placeholder="Password"
+							type="password"
+							value={password}
+							onChange={this.handleInputChange}
+						/>
+					</div>
+					<div>
+						<button type="submit" disabled={!isEnabled}>
+							Login
+						</button>
+					</div>
+					<div>{error && <p>{error.message}</p>}</div>
 				</form>
 			</div>
 		);
