@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { Button, Input, Divider, Header } from 'semantic-ui-react';
 
 import * as routes from '../../constants/routes';
 import { isValidUser, isValidPassword } from '../../helpers/validations';
@@ -53,34 +54,37 @@ class Login extends Component {
 
 		return (
 			<div className="Login">
+				<Header as="h2" textAlign="center">
+					Login to Community
+				</Header>
 				<form onSubmit={this.handleSubmit}>
-					<div>
-						<input
-							name="user"
-							className="input-underlined"
-							placeholder="Username or Email"
-							type="text"
-							value={user}
-							onChange={this.handleInputChange}
-							autoComplete="off"
-						/>
-					</div>
-					<div>
-						<input
-							name="password"
-							className="input-underlined"
-							placeholder="Password"
-							type="password"
-							value={password}
-							onChange={this.handleInputChange}
-						/>
-					</div>
-					<div>
+					{/* <input
+						name="user"
+						placeholder="Username or Email"
+						type="text"
+						value={user}
+						onChange={this.handleInputChange}
+						autoComplete="off"
+					/> */}
+					<Input focus fluid placeholder="Username or Email" />
+					<Divider hidden />
+					{/* <input
+						name="password"
+						placeholder="Password"
+						type="password"
+						value={password}
+						onChange={this.handleInputChange} />*/}
+					<Input fluid placeholder="Password" />
+					<Divider hidden />
+					{/* <div>
 						<button type="submit" disabled={!isEnabled}>
-							Login
+							Log In
 						</button>
-					</div>
-					<div>{error && <p>{error.message}</p>}</div>
+					</div> */}
+					<Button primary fluid disabled={!isEnabled}>
+						Login
+					</Button>
+					{/* <div>{error && <p>{error.message}</p>}</div> */}
 				</form>
 			</div>
 		);
