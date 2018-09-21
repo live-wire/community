@@ -28,8 +28,10 @@ from rest_framework.documentation import include_docs_urls
 from django.contrib import admin
 from django.views.generic.base import TemplateView
 from accounts.views import login, sample_api
+from django.conf.urls.static import static
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
     url(r'^docs/', include_docs_urls(title='My API title', public=False, authentication_classes=[],
                                     permission_classes=[])),
@@ -43,7 +45,7 @@ urlpatterns = [
     url(r'^', include('teacher.urls')),
     url(r'^', include('administrator.urls')),
     url(r'^', include('file_upload.urls'))
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += [
     url(r'^api-auth/', include('rest_framework.urls')),

@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+MACHINE_DIR = os.getcwd()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -36,10 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'sorl.thumbnail',
     # 'snippets.apps.SnippetsConfig',
     'institution.apps.InstitutionConfig',
     'course.apps.CourseConfig',
@@ -47,7 +46,8 @@ INSTALLED_APPS = [
     'student.apps.StudentConfig',
     'teacher.apps.TeacherConfig',
     'administrator.apps.AdministratorConfig',
-    'file_upload.apps.FileUploadConfig'
+    'file_upload.apps.FileUploadConfig',
+    'django.contrib.staticfiles'
 ]
 from .csrfsession import CsrfExemptSessionAuthentication
 
@@ -157,12 +157,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ALLOWED_HOSTS = ['6e2eec0b.ngrok.io', 'localhost', 'testserver']
+ALLOWED_HOSTS = ['*']
 
 SITE_ID = 1
 
@@ -172,3 +171,10 @@ LOGOUT_REDIRECT_URL = 'home'
 import datetime
 TOKEN_EXPIRE_TIME=datetime.timedelta(days=30)
 # AUTH_USER_MODEL = 'users.CustomUser'
+
+STATIC_ROOT = MACHINE_DIR + '/community/static'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'community/static'),
+)
