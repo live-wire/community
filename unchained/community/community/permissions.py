@@ -49,7 +49,7 @@ def canUpdateCourse(request, institution, course):
 def canRetrieveCourse(request, institution, course):
 	if (request.user.is_superuser or 
 	institution.administrators.filter(user_id=request.user.id).exists() or
-	course.teacher_set.filter(user_id=request.user.id).exists() or
+	institution.teachers.filter(user_id=request.user.id).exists() or
 	course.student_set.filter(user_id=request.user.id).exists()):
 		return True
 	return False
