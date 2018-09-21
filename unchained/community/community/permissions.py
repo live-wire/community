@@ -1,6 +1,25 @@
 from rest_framework import permissions
 import pickle
+from django.core.cache import cache
+from functools import reduce
 
+def localcache(f):
+	def wrapper(*args, **kwargs):
+		# First argument will always be request
+		key = ''
+		key += f.__name__ + '-' # function_name
+		key += str(args[0].user.id) + '-' # user_id
+		if len(args)>1:
+			for item in args[1:]:
+				key += str(item.id) + '-'
+		def keyNotPresent():
+			print('key not found', key)
+			return f(*args, **kwargs)
+		ret = cache.get_or_set(key, keyNotPresent)
+		return ret
+	return wrapper
+
+@localcache
 def getUserInstitution(request):
 	if (request.user.is_superuser):
 		return None
@@ -12,6 +31,7 @@ def getUserInstitution(request):
 		if hasattr(request.user, 'administrator'):
 			return request.user.administrator.institution
 
+@localcache
 def getUserCourses(request):
 	if (request.user.is_superuser):
 		return []
@@ -23,6 +43,7 @@ def getUserCourses(request):
 		if hasattr(request.user, 'administrator'):
 			return getUserInstitution(request).courses
 
+@localcache
 def belongsToInstitution(request, institution):
 	if (request.user.is_superuser or 
 	institution.students.filter(user_id=request.user.id).exists() or 
@@ -32,13 +53,14 @@ def belongsToInstitution(request, institution):
 	print(request.user, "doesn't belong to ", institution)
 	return False
 
+@localcache
 def isInstitutionAdmin(request, institution):
 	if (request.user.is_superuser or 
 	institution.administrators.filter(user_id=request.user.id).exists()):
 		return True
 	return False
 
-
+@localcache
 def canUpdateCourse(request, institution, course):
 	if (request.user.is_superuser or 
 	institution.administrators.filter(user_id=request.user.id).exists() or
@@ -46,6 +68,7 @@ def canUpdateCourse(request, institution, course):
 		return True
 	return False
 
+@localcache
 def canRetrieveCourse(request, institution, course):
 	if (request.user.is_superuser or 
 	institution.administrators.filter(user_id=request.user.id).exists() or
@@ -54,6 +77,7 @@ def canRetrieveCourse(request, institution, course):
 		return True
 	return False
 
+@localcache
 def canUpdateProfile(request, institution, user_obj):
 	if (request.user.is_superuser or 
 	institution.administrators.filter(user_id=request.user.id).exists() or

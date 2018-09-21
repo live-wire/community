@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'teacher.apps.TeacherConfig',
     'administrator.apps.AdministratorConfig',
     'file_upload.apps.FileUploadConfig',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+
 ]
 from .csrfsession import CsrfExemptSessionAuthentication
 
@@ -89,6 +90,14 @@ TEMPLATES = [
         },
     },
 ]
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+        'TIMEOUT': 60*30,
+    }
+}
 
 WSGI_APPLICATION = 'community.wsgi.application'
 
