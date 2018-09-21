@@ -176,5 +176,5 @@ STATIC_ROOT = MACHINE_DIR + '/community/static'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'community/static'),
+    os.path.join(BASE_DIR, 'static'),
 )
