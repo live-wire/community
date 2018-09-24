@@ -11,9 +11,10 @@ def localcache(f):
 		key += str(args[0].user.id) + '-' # user_id
 		if len(args)>1:
 			for item in args[1:]:
-				key += str(item.id) + '-'
+				if item:
+					key += str(item.id) + '-'
 		def keyNotPresent():
-			print('key not found', key)
+			print("caching", key)
 			return f(*args, **kwargs)
 		ret = cache.get_or_set(key, keyNotPresent)
 		return ret
@@ -30,6 +31,18 @@ def getUserInstitution(request):
 			return request.user.teacher.institution
 		if hasattr(request.user, 'administrator'):
 			return request.user.administrator.institution
+
+
+def getUserType(request):
+	if (request.user.is_superuser):
+		return 'super'
+	else:
+		if hasattr(request.user, 'student'):
+			return 'student'
+		if hasattr(request.user, 'teacher'):
+			return 'teacher'
+		if hasattr(request.user, 'administrator'):
+			return 'administrator'
 
 @localcache
 def getUserCourses(request):
