@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button, Input, Header, Icon, Form } from 'semantic-ui-react';
 
 import * as routes from '../../constants/routes';
 import { isValidUser, isValidPassword } from '../../helpers/validations';
 import fakeAuth from '../../helpers/fakeAuth';
+import Login from './Login';
 
-class Login extends Component {
+class LoginContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -60,6 +60,7 @@ class Login extends Component {
 					loading: false
 				});
 			});
+		console.log(this.state);
 	}
 
 	render() {
@@ -67,67 +68,19 @@ class Login extends Component {
 		const isEnabled = this.canBeSubmitted();
 
 		return (
-			<div className="Login">
-				<Header as="h2" textAlign="center">
-					Login to Community
-				</Header>
-				<Form onSubmit={this.handleSubmit}>
-					<Form.Field>
-						<Input
-							focus
-							fluid
-							type="text"
-							name="user"
-							placeholder="Username or Email"
-							value={user}
-							onChange={this.handleInputChange}
-							autoComplete="off"
-						/>
-					</Form.Field>
-					<Form.Field>
-						{showPassword ? (
-							<Input
-								fluid
-								type="text"
-								name="password"
-								placeholder="Password"
-								value={password}
-								onChange={this.handleInputChange}
-								icon={
-									<Icon
-										name="eye"
-										link
-										onClick={this.handleToggleShowPassword}
-									/>
-								}
-							/>
-						) : (
-							<Input
-								fluid
-								type="password"
-								name="password"
-								placeholder="Password"
-								value={password}
-								onChange={this.handleInputChange}
-								icon={
-									<Icon
-										name="eye slash"
-										link
-										onClick={this.handleToggleShowPassword}
-									/>
-								}
-							/>
-						)}
-					</Form.Field>
-					<Form.Field>
-						<Button fluid primary disabled={!isEnabled} loading={loading}>
-							Log In
-						</Button>
-					</Form.Field>
-				</Form>
-			</div>
+			<Login
+				user={user}
+				password={password}
+				error={error}
+				showPassword={showPassword}
+				loading={loading}
+				isEnabled={isEnabled}
+				handleInputChange={this.handleInputChange}
+				handleToggleShowPassword={this.handleToggleShowPassword}
+				handleSubmit={this.handleSubmit}
+			/>
 		);
 	}
 }
 
-export default withRouter(Login);
+export default withRouter(LoginContainer);
