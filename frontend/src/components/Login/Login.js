@@ -18,10 +18,6 @@ const StyledLogin = styled.div`
 	padding: 100px;
 `;
 
-const StyledForm = styled.form`
-	margin-top: 50px;
-`;
-
 const Login = props => {
 	const {
 		user,
@@ -41,10 +37,9 @@ const Login = props => {
 				<Header as="h2" textAlign="center">
 					Community Login
 				</Header>
-				<StyledForm onSubmit={handleSubmit}>
+				<form className="margin-t-50" onSubmit={handleSubmit}>
 					<Input
 						className="margin-b-10"
-						focus
 						fluid
 						type="text"
 						name="user"
@@ -90,7 +85,7 @@ const Login = props => {
 						loading={loading}>
 						Log In
 					</Button>
-				</StyledForm>
+				</form>
 			</StyledLogin>
 		</Container>
 	);
