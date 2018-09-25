@@ -9,6 +9,10 @@ from rest_framework.status import (
     HTTP_200_OK
 )
 from rest_framework.response import Response
+from community.permissions import *
+
+class RequestObject(object):
+    pass
 
 
 @csrf_exempt
@@ -25,7 +29,15 @@ def login(request):
         return Response({'error': 'Invalid Credentials'},
                         status=HTTP_404_NOT_FOUND)
     token, _ = Token.objects.get_or_create(user=user)
-    return Response({'token': token.key},
+    requestObj = RequestObject()
+    requestObj.user = user
+    institution = getUserInstitution(requestObj)
+    response = {
+        'token': token.key,
+        'institution': institution.id if institution else '*',
+        'type': getUserType(requestObj)
+    }
+    return Response(response,
                     status=HTTP_200_OK)
 
 
