@@ -20,6 +20,7 @@ from .serializers import AdministratorSerializer
 from .models import Administrator
 from community.permissions import belongsToInstitution, isInstitutionAdmin, getUserInstitution
 from rest_framework.exceptions import PermissionDenied
+from community.filters import applyUserFilters
 
 class AdministratorViewSet(viewsets.ModelViewSet):
 	"""
@@ -37,9 +38,9 @@ class AdministratorViewSet(viewsets.ModelViewSet):
 		if not isInstitutionAdmin(request, getUserInstitution(request)):
 			raise PermissionDenied(detail='User is not an admin_user', code=None)
 		if request.user.is_superuser:
-			self.queryset = Administrator.objects.all()
+			self.queryset = applyUserFilters(request, Administrator)
 		else:
-			self.queryset = Administrator.objects.filter(institution=getUserInstitution(request))
+			self.queryset = applyUserFilters(request, Administrator, institution=getUserInstitution(request))
 		return super(AdministratorViewSet, self).list(request, *args, **kwargs)
 
 	def create(self, request, *args, **kwargs):
