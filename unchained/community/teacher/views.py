@@ -20,6 +20,7 @@ from .serializers import TeacherSerializer
 from .models import Teacher
 from rest_framework.exceptions import PermissionDenied
 from community.permissions import isInstitutionAdmin, getUserInstitution, belongsToInstitution, canUpdateProfile
+from community.filters import applyUserFilters
 
 class TeacherViewSet(viewsets.ModelViewSet):
 	"""
@@ -37,9 +38,9 @@ class TeacherViewSet(viewsets.ModelViewSet):
 		if not belongsToInstitution(request, getUserInstitution(request)):
 			raise PermissionDenied(detail='User does not belong to the institution', code=None)
 		if request.user.is_superuser:
-			self.queryset = Teacher.objects.all()
+			self.queryset = applyUserFilters(request, Teacher)
 		else:
-			self.queryset = Teacher.objects.filter(institution=getUserInstitution(request))
+			self.queryset = applyUserFilters(request, Teacher, institution=getUserInstitution(request))
 		return super(TeacherViewSet, self).list(request, *args, **kwargs)
 
 	def create(self, request, *args, **kwargs):

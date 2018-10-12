@@ -16,10 +16,11 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from community.csrfsession import CsrfExemptSessionAuthentication
-from .serializers import StudentSerializer
+from .serializers import StudentSerializer, StudentListSerializer
 from .models import Student
 from rest_framework.exceptions import PermissionDenied
 from community.permissions import isInstitutionAdmin, belongsToInstitution, getUserInstitution, canUpdateProfile
+from community.filters import applyUserFilters
 
 class StudentViewSet(viewsets.ModelViewSet):
 	"""
@@ -34,12 +35,14 @@ class StudentViewSet(viewsets.ModelViewSet):
 	authentication_classes = (CsrfExemptSessionAuthentication, )
 
 	def list(self, request, *args, **kwargs):
+		self.serializer_class = StudentListSerializer
 		if not belongsToInstitution(request, getUserInstitution(request)):
 			raise PermissionDenied(detail='User does not belong to the institution', code=None)
 		if request.user.is_superuser:
-			self.queryset = Student.objects.all()
+			self.queryset = applyUserFilters(request, Student)
 		else:
-			self.queryset = Student.objects.filter(institution=getUserInstitution(request))
+			self.queryset = applyUserFilters(request, Student, institution=getUserInstitution(request))
+			# Student.objects.filter(institution=getUserInstitution(request))
 		return super(StudentViewSet, self).list(request, *args, **kwargs)
 
 	def create(self, request, *args, **kwargs):
