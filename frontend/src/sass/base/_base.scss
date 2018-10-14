@@ -2,10 +2,23 @@
 // This file contains very basic styles.
 // -----------------------------------------------------------------------------
 
-html {
-	min-height: 700px;
+/* woff2 -> Super Modern Browsers */
+/* woff -> Modern Browsers */
+/* otf -> Safari, Android, iOS */
+@font-face {
+	font-family: 'Metropolis-Regular';
+	src: url('./fonts/Metropolis/woff2/Metropolis-Regular.woff2') format('woff2'),
+		url('./fonts/Metropolis/woff/Metropolis-Regular.woff') format('woff'),
+		url('./fonts/Metropolis/otf/Metropolis-Regular.otf') format('opentype');
 }
 
-#root {
-	height: 100%;
+body {
+	margin: 0;
+	font-size: 16px;
+	font-family: helvetica;
+	background: #0069ff;
+
+	* {
+		box-sizing: border-box;
+	}
 }

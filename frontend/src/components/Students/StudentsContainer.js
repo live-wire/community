@@ -14,13 +14,13 @@ class StudentsContainer extends React.Component {
 
 	render() {
 		const { error, list, loading } = this.state;
-		return (
-			<div>
-				{loading && <div>Loading Results...</div>}
-				{!loading && error && <div>{error}</div>}
-				{!loading && !error && <AllStudents list={list} />}
-			</div>
-		);
+		if (loading) {
+			return <div>Loading Results...</div>;
+		}
+		if (error) {
+			return <div>{error}</div>;
+		}
+		return <AllStudents list={list} />;
 	}
 
 	componentDidMount() {
@@ -28,13 +28,11 @@ class StudentsContainer extends React.Component {
 			.then(res => {
 				this.setState({
 					list: res.data,
-					error: null,
 					loading: false
 				});
 			})
 			.catch(error => {
 				this.setState({
-					list: [],
 					error: error.message,
 					loading: false
 				});

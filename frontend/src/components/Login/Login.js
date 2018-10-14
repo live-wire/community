@@ -1,22 +1,4 @@
 import React from 'react';
-import { Button, Input, Icon, Header } from 'semantic-ui-react';
-import styled from 'styled-components';
-
-const Container = styled.div`
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
-
-const StyledLogin = styled.div`
-	width: 500px;
-	background-color: #ffffff;
-	border: 1px solid #dddfe2;
-	border-radius: 3px;
-	padding: 100px;
-`;
 
 const Login = props => {
 	const {
@@ -32,62 +14,30 @@ const Login = props => {
 	} = props;
 
 	return (
-		<Container>
-			<StyledLogin>
-				<Header as="h2" textAlign="center">
-					Community Login
-				</Header>
-				<form className="margin-t-50" onSubmit={handleSubmit}>
-					<Input
-						className="margin-b-10"
-						fluid
-						type="text"
-						name="user"
-						placeholder="Username or Email"
-						value={user}
-						onChange={handleInputChange}
-						autoComplete="off"
-					/>
-					{showPassword ? (
-						<Input
-							className="margin-b-10"
-							fluid
-							type="text"
-							name="password"
-							placeholder="Password"
-							value={password}
-							onChange={handleInputChange}
-							icon={<Icon name="eye" link onClick={handleToggleShowPassword} />}
-						/>
-					) : (
-						<Input
-							className="margin-b-10"
-							fluid
-							type="password"
-							name="password"
-							placeholder="Password"
-							value={password}
-							onChange={handleInputChange}
-							icon={
-								<Icon
-									name="eye slash"
-									link
-									onClick={handleToggleShowPassword}
-								/>
-							}
-						/>
-					)}
-					<Button
-						fluid
-						primary
-						type="submit"
-						disabled={!isEnabled}
-						loading={loading}>
-						Log In
-					</Button>
-				</form>
-			</StyledLogin>
-		</Container>
+		<div className="Login">
+			<div className="logo">Community</div>
+			<form className="vertical-form" onSubmit={handleSubmit}>
+				<legend>Log In</legend>
+				<input
+					type="text"
+					name="user"
+					placeholder="Username or Email"
+					value={user}
+					onChange={handleInputChange}
+				/>
+				<input
+					type="password"
+					name="password"
+					placeholder="Password"
+					value={password}
+					onChange={handleInputChange}
+				/>
+				<input type="submit" disabled={!isEnabled} value="Log In" />
+				<p>
+					<a>Forgot Password?</a>
+				</p>
+			</form>
+		</div>
 	);
 };
 
