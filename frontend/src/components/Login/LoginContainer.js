@@ -56,10 +56,10 @@ class LoginContainer extends Component {
 			})
 			.catch(err => {
 				this.setState({
-					loading: false
+					loading: false,
+					error: err
 				});
 			});
-		console.log(this.state);
 	}
 
 	render() {

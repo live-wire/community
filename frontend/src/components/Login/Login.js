@@ -15,6 +15,7 @@ const Login = props => {
 
 	return (
 		<div className="Login">
+			{error && <div className="notice">{error.message}</div>}
 			<div className="logo">Community</div>
 			<form className="vertical-form" onSubmit={handleSubmit}>
 				<legend>Log In</legend>
