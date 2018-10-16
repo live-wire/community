@@ -1,10 +1,12 @@
 import React from 'react';
-import Menu from '../Menu/Menu';
+import Sidebar from '../Sidebar';
+import Dashboard from '../Dashboard';
 
 const Home = () => {
 	return (
-		<div>
-			<Menu />
+		<div className="Home">
+			<Sidebar className="Sidebar" />
+			<Dashboard className="Dashboard" />
 		</div>
 	);
 };

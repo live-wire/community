@@ -49,7 +49,7 @@ class LoginContainer extends Component {
 		fakeAuth
 			.login()
 			.then(res => {
-				//history.push(routes.HOME);
+				history.push(routes.HOME);
 				this.setState({
 					loading: false
 				});
