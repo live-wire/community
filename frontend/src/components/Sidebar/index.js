@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ICONS from '../../constants/icons';
+import Icon from '../../framework/components/Icon';
 
 const items = [
 	{
@@ -89,13 +91,13 @@ class SiderbarDropdownItem extends React.Component {
 	}
 }
 
-const SiderbarDropdownItem = props => {
-	return (
-		<div className="SiderbarDropdownItem">
-			<span>{label}</span>
-		</div>
-	);
-};
+// const SiderbarDropdownItem = props => {
+// 	return (
+// 		<div className="SiderbarDropdownItem">
+// 			<span>{label}</span>
+// 		</div>
+// 	);
+// };
 
 {
 	/* const SidebarItem = props => {
@@ -113,6 +115,7 @@ class Sidebar extends React.Component {
 	render() {
 		return (
 			<div className="Sidebar">
+				<Icon icon={ICONS.BUBBLE} />
 				{/* {items.map(item => {
 					if (item.to) {
 						return (
