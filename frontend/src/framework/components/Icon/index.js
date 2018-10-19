@@ -12,19 +12,26 @@ const Icon = props => {
 		}
 	};
 
+	const { size, icon, color } = props;
+
+	const { viewBox, d } = icon;
+
 	return (
 		<svg
 			style={styles.svg}
-			width={`${props.size}px`}
-			height={`${props.size}px`}
-			viewBox="0 0 1024 1024">
-			<path style={styles.path} d={props.icon} />
+			width={`${size}px`}
+			height={`${size}px`}
+			viewBox={viewBox}>
+			<path style={styles.path} d={d} />
 		</svg>
 	);
 };
 
 Icon.propTypes = {
-	icon: PropTypes.string.isRequired,
+	icon: PropTypes.shape({
+		viewBox: PropTypes.string.isRequired,
+		d: PropTypes.string.isRequired
+	}).isRequired,
 	size: PropTypes.number,
 	color: PropTypes.string
 };
