@@ -4,11 +4,16 @@ import PropTypes from 'prop-types';
 
 const SidebarSimpleItem = props => {
 	const { label, to } = props;
+	// return (
+	// 	<Link to={to} className="SidebarSimpleItem">
+	// 		<div>
+	// 			<span>{label}</span>
+	// 		</div>
+	// 	</Link>
+	// );
 	return (
-		<Link to={to}>
-			<div className="SidebarSimpleItem">
-				<span>{label}</span>
-			</div>
+		<Link to={to} className="SidebarSimpleItem">
+			{label}
 		</Link>
 	);
 };

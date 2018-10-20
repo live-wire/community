@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import ICONS from '../../constants/icons';
 import SidebarSimpleItem from './SidebarSimpleItem';
@@ -39,13 +40,11 @@ class SidebarDropdownItem extends React.Component {
 					<span>{label}</span>
 					<Icon icon={icon} />
 				</div>
-				{showDropdown && (
-					<ul>
-						{subItems.map(si => (
-							<SidebarSimpleItem key={si.label} label={si.label} to={si.to} />
-						))}
-					</ul>
-				)}
+				<ul className={classNames({ open: showDropdown })}>
+					{subItems.map(si => (
+						<SidebarSimpleItem key={si.label} label={si.label} to={si.to} />
+					))}
+				</ul>
 			</div>
 		);
 	}

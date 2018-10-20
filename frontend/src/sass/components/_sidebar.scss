@@ -1,5 +1,41 @@
 .Sidebar {
-	height: 100%;
 	width: 200px;
-	background: red;
+	height: 100%;
+	overflow: auto;
+	background-color: #031b4d;
+	font-size: 16px;
+	padding: 20px 0 0;
+}
+
+.SidebarSimpleItem {
+	display: block;
+	width: 100%;
+	font-size: 16px;
+	line-height: 1;
+	font-weight: 300;
+	padding: 10px 20px;
+	color: #ffffff;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	&:hover {
+		color: #ffffff;
+		background-color: #0a1b3d;
+	}
+}
+
+.SidebarDropdownItem {
+	ul {
+		opacity: 0;
+		max-height: 0;
+		overflow: hidden;
+		transition: all 0.4s linear;
+
+		&.open {
+			opacity: 1;
+			max-height: 200px;
+			overflow: auto;
+		}
+	}
 }

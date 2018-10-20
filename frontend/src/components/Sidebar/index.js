@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import SidebarSimpleItem from './SidebarSimpleItem';
@@ -41,33 +40,50 @@ Sidebar.propTypes = {
 Sidebar.defaultProps = {
 	items: [
 		{
-			label: 'Item 1' /* Mandatory Label */,
-			to: '/item1' /* Optional Link to */
+			label: 'Test 1',
+			to: '/test1'
 		},
 		{
-			label: 'Item 2' /* Mandatory Label */,
-			to: '/item2' /* Optional to */
+			label: 'Test 2',
+			to: '/test1'
 		},
 		{
-			label: 'Item 3' /* Mandatory Label */,
+			label: 'Test 3',
+			to: '/test1'
+		},
+		{
+			label: 'Manage',
 			subItems: [
 				{
-					label: 'Item 4',
-					to: '/item4'
+					label: 'Students',
+					to: '/students'
 				},
 				{
-					label: 'Item 5',
-					to: '/item5'
+					label: 'Teachers',
+					to: '/teachers'
 				},
 				{
-					label: 'Item 6',
-					to: '/item6'
+					label: 'Courses',
+					to: '/courses'
 				}
-			] /* Optional SubItems */
+			]
 		},
 		{
-			label: 'Item 4' /* Mandatory Label */,
-			to: '/item4' /* Optional to */
+			label: 'Account',
+			subItems: [
+				{
+					label: 'Profile',
+					to: '/profile'
+				},
+				{
+					label: 'Billing',
+					to: '/bolling'
+				},
+				{
+					label: 'Security',
+					to: '/security'
+				}
+			]
 		}
 	]
 };
