@@ -40,18 +40,6 @@ Sidebar.propTypes = {
 Sidebar.defaultProps = {
 	items: [
 		{
-			label: 'Test 1',
-			to: '/test1'
-		},
-		{
-			label: 'Test 2',
-			to: '/test1'
-		},
-		{
-			label: 'Test 3',
-			to: '/test1'
-		},
-		{
 			label: 'Manage',
 			subItems: [
 				{

@@ -26,6 +26,23 @@
 }
 
 .SidebarDropdownItem {
+	width: 100%;
+	border-bottom: 1px solid rgba(180, 188, 199, 0.32);
+	padding-bottom: 20px;
+
+	.heading {
+		padding: 25px 20px 15px;
+		display: flex;
+		justify-content: space-between;
+		cursor: pointer;
+		text-transform: uppercase;
+		color: #677694;
+		font-weight: 600;
+		font-size: 0.8rem;
+		line-height: 0.8rem;
+		letter-spacing: 0.06rem;
+	}
+
 	ul {
 		opacity: 0;
 		max-height: 0;

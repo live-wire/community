@@ -36,7 +36,7 @@ class SidebarDropdownItem extends React.Component {
 
 		return (
 			<div className="SidebarDropdownItem">
-				<div onClick={this.handleClick}>
+				<div className="heading" onClick={this.handleClick}>
 					<span>{label}</span>
 					<Icon icon={icon} />
 				</div>
