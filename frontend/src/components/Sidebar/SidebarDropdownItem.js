@@ -14,8 +14,8 @@ class SidebarDropdownItem extends React.Component {
 		this.dropdownCloseIcon = ICONS.ANGLE_UP;
 
 		this.state = {
-			showDropdown: false,
-			icon: this.dropdownOpenIcon
+			showDropdown: true,
+			icon: this.dropdownCloseIcon
 		};
 
 		this.handleClick = this.handleClick.bind(this);
@@ -35,15 +35,14 @@ class SidebarDropdownItem extends React.Component {
 		const { icon, showDropdown } = this.state;
 
 		return (
-			<div className="SidebarDropdownItem">
-				<div className="heading" onClick={this.handleClick}>
+			<div
+				className={classNames('SidebarDropdownItem', { open: showDropdown })}>
+				<div className="title" onClick={this.handleClick}>
 					<span>{label}</span>
-					<Icon icon={icon} />
+					<Icon icon={icon} color="#677694" size={12} />
 				</div>
-				<ul className={classNames({ open: showDropdown })}>
-					{subItems.map(si => (
-						<SidebarSimpleItem key={si.label} label={si.label} to={si.to} />
-					))}
+				<ul>
+					{subItems.map(si => <SidebarSimpleItem key={si.label} {...si} />)}
 				</ul>
 			</div>
 		);

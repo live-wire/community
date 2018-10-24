@@ -9,12 +9,11 @@
 
 .SidebarSimpleItem {
 	display: block;
-	width: 100%;
-	font-size: 16px;
-	line-height: 1;
-	font-weight: 300;
-	padding: 10px 20px;
 	color: #ffffff;
+	padding: 10px 20px;
+	font-size: 16px;
+	line-height: 1rem;
+	font-weight: 400;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -28,10 +27,9 @@
 .SidebarDropdownItem {
 	width: 100%;
 	border-bottom: 1px solid rgba(180, 188, 199, 0.32);
-	padding-bottom: 20px;
 
-	.heading {
-		padding: 25px 20px 15px;
+	.title {
+		padding: 25px 20px;
 		display: flex;
 		justify-content: space-between;
 		cursor: pointer;
@@ -48,11 +46,14 @@
 		max-height: 0;
 		overflow: hidden;
 		transition: all 0.4s linear;
+	}
 
-		&.open {
+	&.open {
+		ul {
 			opacity: 1;
-			max-height: 200px;
+			max-height: 300px;
 			overflow: auto;
+			padding-bottom: 20px;
 		}
 	}
 }

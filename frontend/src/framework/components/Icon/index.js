@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 
 const Icon = props => {
 	const styles = {
-		svg: {
-			display: 'inline-block',
-			verticalAlign: 'middle'
-		},
 		path: {
 			fill: props.color
 		}
@@ -17,11 +13,7 @@ const Icon = props => {
 	const { viewBox, d } = icon;
 
 	return (
-		<svg
-			style={styles.svg}
-			width={`${size}px`}
-			height={`${size}px`}
-			viewBox={viewBox}>
+		<svg width={`${size}px`} height={`${size}px`} viewBox={viewBox}>
 			<path style={styles.path} d={d} />
 		</svg>
 	);

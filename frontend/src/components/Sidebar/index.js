@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import SidebarSimpleItem from './SidebarSimpleItem';
 import SidebarDropdownItem from './SidebarDropdownItem';
 
 class Sidebar extends React.Component {
@@ -10,24 +8,7 @@ class Sidebar extends React.Component {
 
 		return (
 			<div className="Sidebar">
-				{items.map(item => {
-					if (item.to) {
-						return (
-							<SidebarSimpleItem
-								key={item.label}
-								label={item.label}
-								to={item.to}
-							/>
-						);
-					}
-					return (
-						<SidebarDropdownItem
-							key={item.label}
-							label={item.label}
-							subItems={item.subItems}
-						/>
-					);
-				})}
+				{items.map(item => <SidebarDropdownItem key={item.label} {...item} />)}
 			</div>
 		);
 	}
@@ -43,16 +24,32 @@ Sidebar.defaultProps = {
 			label: 'Manage',
 			subItems: [
 				{
-					label: 'Students',
-					to: '/students'
+					label: 'Droplets',
+					to: '/droplets'
 				},
 				{
-					label: 'Teachers',
-					to: '/teachers'
+					label: 'Volumes',
+					to: '/volumes'
 				},
 				{
-					label: 'Courses',
-					to: '/courses'
+					label: 'Spaces',
+					to: '/spaces'
+				},
+				{
+					label: 'Images',
+					to: '/images'
+				},
+				{
+					label: 'Networking',
+					to: '/networking'
+				},
+				{
+					label: 'Monitoring',
+					to: '/monitoring'
+				},
+				{
+					label: 'API',
+					to: '/api'
 				}
 			]
 		},
@@ -69,6 +66,10 @@ Sidebar.defaultProps = {
 				},
 				{
 					label: 'Security',
+					to: '/security'
+				},
+				{
+					label: 'Referrals',
 					to: '/security'
 				}
 			]
