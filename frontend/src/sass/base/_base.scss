@@ -18,6 +18,11 @@
 	box-sizing: border-box;
 }
 
+::selection {
+	background: #0069ff;
+	color: #fff;
+}
+
 body {
 	margin: 0 auto;
 	padding: 0;
