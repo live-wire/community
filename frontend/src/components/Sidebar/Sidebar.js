@@ -4,6 +4,7 @@ import SidebarDropdownItem from './SidebarDropdownItem';
 
 class Sidebar extends React.Component {
 	render() {
+		console.log('Sidebar');
 		const { items } = this.props;
 
 		return (
@@ -24,32 +25,16 @@ Sidebar.defaultProps = {
 			label: 'Manage',
 			subItems: [
 				{
-					label: 'Droplets',
-					to: '/droplets'
+					label: 'Students',
+					to: '/students'
 				},
 				{
-					label: 'Volumes',
-					to: '/volumes'
+					label: 'Teachers',
+					to: '/teachers'
 				},
 				{
-					label: 'Spaces',
-					to: '/spaces'
-				},
-				{
-					label: 'Images',
-					to: '/images'
-				},
-				{
-					label: 'Networking',
-					to: '/networking'
-				},
-				{
-					label: 'Monitoring',
-					to: '/monitoring'
-				},
-				{
-					label: 'API',
-					to: '/api'
+					label: 'Courses',
+					to: '/courses'
 				}
 			]
 		},
