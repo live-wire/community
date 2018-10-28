@@ -25,6 +25,10 @@ Sidebar.defaultProps = {
 			label: 'Manage',
 			subItems: [
 				{
+					label: 'Dashboard',
+					to: '/dashboard'
+				},
+				{
 					label: 'Students',
 					to: '/students'
 				},
