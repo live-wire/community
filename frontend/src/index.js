@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import App from './components/App/App';
-import './sass/main.scss';
+import Home from './components/Home/Home';
 
 ReactDOM.render(
 	<Router>
-		<App />
+		<Home />
 	</Router>,
 	document.getElementById('root')
 );

@@ -1,33 +1,33 @@
 import React from 'react';
 import AllStudents from './AllStudents';
-import { getStudents } from './fake/api';
+import { getStudents } from './helpers/actions';
 
 class StudentsContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			list: [],
+			students: [],
 			error: null,
 			loading: true
 		};
 	}
 
 	render() {
-		const { error, list, loading } = this.state;
+		const { error, students, loading } = this.state;
 		if (loading) {
 			return <div>Loading Results...</div>;
 		}
 		if (error) {
 			return <div>{error}</div>;
 		}
-		return <AllStudents list={list} />;
+		return <AllStudents students={students} />;
 	}
 
 	componentDidMount() {
 		getStudents()
 			.then(res => {
 				this.setState({
-					list: res.data,
+					students: res.data,
 					loading: false
 				});
 			})

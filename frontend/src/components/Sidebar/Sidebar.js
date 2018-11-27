@@ -1,16 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import SidebarDropdownItem from './SidebarDropdownItem';
+
+const StyledSidebar = styled.div`
+	width: 200px;
+	height: 100%;
+	overflow: auto;
+	background-color: #031b4d;
+	font-size: 16px;
+	padding: 20px 0 0;
+`;
 
 class Sidebar extends React.Component {
 	render() {
-		console.log('Sidebar');
 		const { items } = this.props;
 
 		return (
-			<div className="Sidebar">
+			<StyledSidebar>
 				{items.map(item => <SidebarDropdownItem key={item.label} {...item} />)}
-			</div>
+			</StyledSidebar>
 		);
 	}
 }
@@ -48,18 +57,6 @@ Sidebar.defaultProps = {
 				{
 					label: 'Profile',
 					to: '/profile'
-				},
-				{
-					label: 'Billing',
-					to: '/bolling'
-				},
-				{
-					label: 'Security',
-					to: '/security'
-				},
-				{
-					label: 'Referrals',
-					to: '/security'
 				}
 			]
 		}
