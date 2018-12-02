@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const StyledSidebarSimpleItem = styled.div`
+const StyledSidebarSimpleItem = styled(Link)`
 	display: block;
 	color: #ffffff;
 	padding: 10px 20px;
@@ -22,11 +22,7 @@ const StyledSidebarSimpleItem = styled.div`
 
 const SidebarSimpleItem = props => {
 	const { label, to } = props;
-	return (
-		<StyledSidebarSimpleItem>
-			<Link to={to}>{label}</Link>
-		</StyledSidebarSimpleItem>
-	);
+	return <StyledSidebarSimpleItem to={to}>{label}</StyledSidebarSimpleItem>;
 };
 
 SidebarSimpleItem.propTypes = {
