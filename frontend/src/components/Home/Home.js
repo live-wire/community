@@ -12,12 +12,13 @@ const StyledHome = styled.div`
 
 class Home extends React.Component {
 	render() {
-		return (
-			<StyledHome>
-				<Sidebar />
-				<MainContent />
-			</StyledHome>
-		);
+		// return (
+		// 	<StyledHome>
+		// 		<Sidebar />
+		// 		<MainContent />
+		// 	</StyledHome>
+		// );
+		return <div>Home</div>;
 	}
 }
 
