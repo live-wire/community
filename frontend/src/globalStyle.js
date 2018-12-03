@@ -1,5 +1,5 @@
 import {injectGlobal} from 'styled-components';
-console.log(injectGlobal);
+
 injectGlobal`
 	*,
 	:after,

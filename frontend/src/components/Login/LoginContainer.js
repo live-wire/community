@@ -2,22 +2,22 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import * as routes from '../../constants/routes';
 import { isValidUser, isValidPassword } from '../../helpers/validations';
-import fakeAuth from './fakeAuth';
 import Login from './Login';
+import {login} from './actions';
 
 class LoginContainer extends Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			user: '',
 			password: '',
-			showPassword: false,
 			error: null,
 			loading: false
 		};
+
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleToggleShowPassword = this.handleToggleShowPassword.bind(this);
 	}
 
 	handleInputChange(event) {
@@ -28,42 +28,40 @@ class LoginContainer extends Component {
 		});
 	}
 
-	handleToggleShowPassword() {
-		this.setState({
-			showPassword: !this.state.showPassword
-		});
-	}
-
 	canBeSubmitted() {
-		const { user, password } = this.state;
+		const { user, password, loading } = this.state;
 
-		return isValidUser(user) && isValidPassword(password);
+		return !loading && isValidUser(user) && isValidPassword(password);
 	}
 
 	handleSubmit(event) {
-		event.preventDefault();
+		// event.preventDefault();
 		const { history } = this.props;
+		const {user, password} = this.state;
+
 		this.setState({
 			loading: true
 		});
-		fakeAuth
-			.login()
-			.then(res => {
-				history.push(routes.HOME);
-				this.setState({
-					loading: false
-				});
-			})
-			.catch(err => {
-				this.setState({
-					loading: false,
-					error: err
-				});
+
+		login(user, password)
+		.then(res => {
+			// history.push(routes.HOME);
+			// this.setState({
+			// 	loading: false
+			// });
+			console.log(res);
+		})
+		.catch(err => {
+			this.setState({
+				loading: false,
+				error: err
 			});
+			console.log(err);
+		});
 	}
 
 	render() {
-		const { user, password, error, showPassword, loading } = this.state;
+		const { user, password, error, loading } = this.state;
 		const isEnabled = this.canBeSubmitted();
 
 		return (
@@ -71,11 +69,9 @@ class LoginContainer extends Component {
 				user={user}
 				password={password}
 				error={error}
-				showPassword={showPassword}
 				loading={loading}
 				isEnabled={isEnabled}
 				handleInputChange={this.handleInputChange}
-				handleToggleShowPassword={this.handleToggleShowPassword}
 				handleSubmit={this.handleSubmit}
 			/>
 		);
