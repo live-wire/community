@@ -35,7 +35,7 @@ class LoginContainer extends Component {
 	}
 
 	handleSubmit(event) {
-		// event.preventDefault();
+		event.preventDefault();
 		const { history } = this.props;
 		const {user, password} = this.state;
 
