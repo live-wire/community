@@ -14,7 +14,6 @@ class LoginContainer extends Component {
 			password: '',
 			error: null,
 			loading: false,
-			redirectToReferrer: false
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -46,10 +45,6 @@ class LoginContainer extends Component {
 		login(user, password)
 			.then(res => {
 				const { logUserIn } = this.props;
-				this.setState({
-					redirectToReferrer: true,
-					loading: false,
-				});
 				logUserIn();
 			})
 			.catch(err => {
@@ -63,13 +58,6 @@ class LoginContainer extends Component {
 	}
 
 	render() {
-		debugger
-		const {redirectToReferrer} = this.state;
-		if(redirectToReferrer) {
-			debugger
-			return <Redirect to='/home' />
-		}
-
 		const { user, password, error, loading } = this.state;
 		const isEnabled = this.canBeSubmitted();
 

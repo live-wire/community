@@ -23,6 +23,8 @@ class App extends React.Component {
 
 	render() {
 		const {isLoggedIn} = this.state;
+		console.log(window.location.pathname);
+
 		return (
 			<div className="App">
 				<Route
