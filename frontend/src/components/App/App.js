@@ -9,23 +9,30 @@ class App extends React.Component {
 		super(props);
 
 		this.state = {
-			isLoggedIn: true
+			isLoggedIn: false
 		}
+
+		this.logUserIn = this.logUserIn.bind(this);
+	}
+
+	logUserIn() {
+		this.setState({
+			isLoggedIn: true
+		});
 	}
 
 	render() {
 		const {isLoggedIn} = this.state;
-
 		return (
 			<div className="App">
 				<Route
 					exact
 					path='/'
-					render={props => isLoggedIn ? <Redirect to='/home' /> : <LoginContainer {...props} />} />
+					render={props => <Redirect to='/home' /> } />
 
 				<Route
 					path='/login'
-					render={props => isLoggedIn ? <Redirect to='/home' /> : <LoginContainer {...props} />} />
+					render={props => isLoggedIn ? <Redirect to='/home' /> : <LoginContainer {...props} logUserIn={this.logUserIn} />} />
 
 				<PrivateRoute path='/home' component={Home} isLoggedIn={isLoggedIn} />
 			</div>

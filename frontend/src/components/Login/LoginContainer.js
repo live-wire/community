@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import * as routes from '../../constants/routes';
 import { isValidUser, isValidPassword } from '../../helpers/validations';
 import Login from './Login';
@@ -13,7 +13,8 @@ class LoginContainer extends Component {
 			user: '',
 			password: '',
 			error: null,
-			loading: false
+			loading: false,
+			redirectToReferrer: false
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -35,7 +36,6 @@ class LoginContainer extends Component {
 	}
 
 	handleSubmit(event) {
-		event.preventDefault();
 		const { history } = this.props;
 		const {user, password} = this.state;
 
@@ -44,23 +44,32 @@ class LoginContainer extends Component {
 		});
 
 		login(user, password)
-		.then(res => {
-			// history.push(routes.HOME);
-			// this.setState({
-			// 	loading: false
-			// });
-			console.log(res);
-		})
-		.catch(err => {
-			this.setState({
-				loading: false,
-				error: err
-			});
-			console.log(err);
-		});
+			.then(res => {
+				const { logUserIn } = this.props;
+				this.setState({
+					redirectToReferrer: true,
+					loading: false,
+				});
+				logUserIn();
+			})
+			.catch(err => {
+				this.setState({
+					error: err.response.data,
+					loading: false
+				});
+			})
+
+		event.preventDefault();
 	}
 
 	render() {
+		debugger
+		const {redirectToReferrer} = this.state;
+		if(redirectToReferrer) {
+			debugger
+			return <Redirect to='/home' />
+		}
+
 		const { user, password, error, loading } = this.state;
 		const isEnabled = this.canBeSubmitted();
 
@@ -78,4 +87,4 @@ class LoginContainer extends Component {
 	}
 }
 
-export default withRouter(LoginContainer);
+export default LoginContainer;

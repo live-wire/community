@@ -51,48 +51,6 @@ Sidebar.defaultProps = {
 				}
 			]
 		},
-		{
-			label: 'Manage',
-			subItems: [
-				{
-					label: 'Dashboard',
-					to: '/home/dashboard'
-				},
-				{
-					label: 'Students',
-					to: '/home/students'
-				},
-				{
-					label: 'Teachers',
-					to: '/home/teachers'
-				},
-				{
-					label: 'Courses',
-					to: '/home/courses'
-				}
-			]
-		},
-		{
-			label: 'Manage',
-			subItems: [
-				{
-					label: 'Dashboard',
-					to: '/home/dashboard'
-				},
-				{
-					label: 'Students',
-					to: '/home/students'
-				},
-				{
-					label: 'Teachers',
-					to: '/home/teachers'
-				},
-				{
-					label: 'Courses',
-					to: '/home/courses'
-				}
-			]
-		},
 	]
 };
 

@@ -86,7 +86,7 @@ const Login = props => {
 
 	return (
 		<div className="Login">
-			{error && <Notice>{error.message}</Notice>}
+			{error && <Notice>{error.error}</Notice>}
 			<LoginForm onSubmit={handleSubmit}>
 				<Legend>Log In</Legend>
 				<FormInput
