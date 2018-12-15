@@ -14,12 +14,15 @@ const Container = styled.div`
 
 class MainContent extends React.Component {
 	render() {
+
+		const {token} = this.props;
+
 		return (
 			<Container className="MainContent">
 				<Switch>
 					<Route exact path="/" render={() => <Redirect to="/dashboard" />} />
 					<Route exact path="/home/dashboard" component={Dashboard} />
-					<Route exact path="/home/students" component={StudentsContainer} />
+					<Route exact path="/home/students" render={props => <StudentsContainer {...props} token={token} />}/>
 					<Route exact path="/home/teachers" component={Teachers} />
 					<Route exact path="/home/courses" component={Courses} />
 				</Switch>

@@ -98,12 +98,12 @@ const rows = [
 ];
 
 const AllStudents = props => {
-	const { students } = props;
+	const { students, loading } = props;
 
 	return (
 		<Container>
 			<Heading>Students</Heading>
-			<DataTable headers={headers} rows={rows} />
+			<DataTable headers={headers} rows={[]} loading={loading} />
 		</Container>
 	);
 };

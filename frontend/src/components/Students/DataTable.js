@@ -1,5 +1,14 @@
 import React from 'react';
 import {Icon, Menu, Table} from 'semantic-ui-react';
+import styled from 'styled-components';
+
+const LoadingContainer = styled.div`
+	width: 100%;
+	height: 500px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
 
 class DataTable extends React.Component {
 	constructor(props) {
@@ -7,8 +16,7 @@ class DataTable extends React.Component {
 	}
 
 	render() {
-		const {headers, rows} = this.props;
-		const headerNames = headers.map(header => header.name);
+		const {headers, rows, loading} = this.props;
 
 		return (
 			<Table>
@@ -18,10 +26,12 @@ class DataTable extends React.Component {
 					</Table.Row>
 				</Table.Header>
 
-				<Table.Body>
-					{rows.map(row => <Table.Row key={row.id}>
+				<Table.Body style={{ minHeight: '500px' }}>
+					{!loading && rows.map(row => <Table.Row key={row.id}>
 						{headers.map(header => <Table.Cell key={header.id}>{row[header.name]}</Table.Cell>)}
 					</Table.Row>)}
+
+					{/* {loading && <LoadingContainer>Loading</LoadingContainer>} */}
 				</Table.Body>
 
 				<Table.Footer>

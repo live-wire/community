@@ -26,13 +26,16 @@ const MainContentWrapper = styled.div`
 
 class Home extends React.Component {
 	render() {
+
+		const {token} = this.props;
+
 		return (
 			<Container className="Home">
 				<SidebarWrapper>
 					<Sidebar />
 				</SidebarWrapper>
 				<MainContentWrapper>
-					<MainContent />
+					<MainContent token={token} />
 				</MainContentWrapper>
 			</Container>
 		);

@@ -1,41 +1,39 @@
 import React from 'react';
 import AllStudents from './AllStudents';
-import { getStudents } from './helpers/actions';
+import { getStudents } from './actions';
 
 class StudentsContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			students: [],
-			error: null,
 			loading: false
 		};
 	}
 
 	render() {
-		const { error, students, loading } = this.state;
-		if (loading) {
-			return <div>Loading Results...</div>;
-		}
-		if (error) {
-			return <div>{error}</div>;
-		}
-		return <AllStudents students={students} />;
+		const { students, loading } = this.state;
+		return <AllStudents students={students} loading={loading}/>;
 	}
 
 	componentDidMount() {
-		// getStudents()
+		// const {token} = this.props;
+		// getStudents(token)
 		// 	.then(res => {
-		// 		this.setState({
-		// 			students: res.data,
-		// 			loading: false
-		// 		});
+		// 		console.log(res);
+		// 		debugger
+		// 		// this.setState({
+		// 		// 	students: res.data,
+		// 		// 	loading: false
+		// 		// });
 		// 	})
 		// 	.catch(error => {
-		// 		this.setState({
-		// 			error: error.message,
-		// 			loading: false
-		// 		});
+		// 		console.log(error);
+		// 		debugger
+		// 		// this.setState({
+		// 		// 	error: error.message,
+		// 		// 	loading: false
+		// 		// });
 		// 	});
 	}
 }

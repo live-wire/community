@@ -45,7 +45,7 @@ class LoginContainer extends Component {
 		login(user, password)
 			.then(res => {
 				const { logUserIn } = this.props;
-				logUserIn();
+				logUserIn(res.data.token);
 			})
 			.catch(err => {
 				this.setState({

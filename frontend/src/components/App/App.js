@@ -9,21 +9,37 @@ class App extends React.Component {
 		super(props);
 
 		this.state = {
-			isLoggedIn: true
+			isLoggedIn: false,
+			token: '',
 		}
 
 		this.logUserIn = this.logUserIn.bind(this);
 	}
 
-	logUserIn() {
+	componentWillMount() {
+		const token = localStorage.getItem('communityToken');
+		if(token) {
+			this.setState({
+				isLoggedIn: true,
+				token
+			});
+		}
+	}
+
+	saveTokenInLocalStorage(key, token) {
+		localStorage.setItem(key, token);
+	}
+
+	logUserIn(token) {
+		this.saveTokenInLocalStorage('communityToken', token);
 		this.setState({
-			isLoggedIn: true
+			isLoggedIn: true,
+			token
 		});
 	}
 
 	render() {
-		const {isLoggedIn} = this.state;
-		console.log(window.location.pathname);
+		const {isLoggedIn, token} = this.state;
 
 		return (
 			<div className="App">
@@ -36,7 +52,7 @@ class App extends React.Component {
 					path='/login'
 					render={props => isLoggedIn ? <Redirect to='/home' /> : <LoginContainer {...props} logUserIn={this.logUserIn} />} />
 
-				<PrivateRoute path='/home' component={Home} isLoggedIn={isLoggedIn} />
+				<PrivateRoute path='/home' component={Home} isLoggedIn={isLoggedIn} token={token} />
 			</div>
 		);
 	}
