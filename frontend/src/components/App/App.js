@@ -9,7 +9,7 @@ class App extends React.Component {
 		super(props);
 
 		this.state = {
-			isLoggedIn: false
+			isLoggedIn: true
 		}
 
 		this.logUserIn = this.logUserIn.bind(this);

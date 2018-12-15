@@ -8,7 +8,7 @@ class StudentsContainer extends React.Component {
 		this.state = {
 			students: [],
 			error: null,
-			loading: true
+			loading: false
 		};
 	}
 
@@ -24,19 +24,19 @@ class StudentsContainer extends React.Component {
 	}
 
 	componentDidMount() {
-		getStudents()
-			.then(res => {
-				this.setState({
-					students: res.data,
-					loading: false
-				});
-			})
-			.catch(error => {
-				this.setState({
-					error: error.message,
-					loading: false
-				});
-			});
+		// getStudents()
+		// 	.then(res => {
+		// 		this.setState({
+		// 			students: res.data,
+		// 			loading: false
+		// 		});
+		// 	})
+		// 	.catch(error => {
+		// 		this.setState({
+		// 			error: error.message,
+		// 			loading: false
+		// 		});
+		// 	});
 	}
 }
 

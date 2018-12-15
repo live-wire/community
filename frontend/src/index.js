@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './components/App/App';
 import './globalStyle';
+import 'semantic-ui-css/semantic.min.css';
 
 ReactDOM.render(
 	<Router>
