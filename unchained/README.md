@@ -8,7 +8,7 @@
 - `pip install -r requirements.txt`
 - `cd community/` and finally `gunicorn community.wsgi` 
 - This will start the development server at `localhost:8000/`
-- [ DOCKER SETUP COMING SOON ]
+- **[ DOCKER SETUP COMING SOON ]**
 
 ---
 ### API INSTRUCTIONS :scroll:
@@ -35,20 +35,20 @@
 - Install postgres!
 - _Can't login etc ?_
     - Update `/etc/postgresql/11/main/pg_hba.conf` from _peer_ to _trust/md5_
-    - so [link](https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge)
+    - stack-overflow [thread](https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge)
 - **Backup and Restore**:
     - `pg_dump community > dumpfile`
     - `psql -U communityuser dbname < dumpfile`
 
 ---
 #### TODOs :snowboarder:
-[ ] Host DB in a separate instance
-[ ] Set up Nginx for Django
-[ ] Set up Nginx for front-end
-[ ] Use GUnicorn
-[ ] Dockerize the server
-[ ] Docker-compose the server with frontend
-[x] Permissions in the access groups
-[x] Register everything on admin page - Done
-[x] Host the application on the cloud
-[x] Implement caching for permissions! (It involves lots of db calls right now)
+    [ ] Host DB in a separate instance
+    [ ] Set up Nginx for Django
+    [ ] Set up Nginx for front-end
+    [ ] Use GUnicorn
+    [ ] Dockerize the server
+    [ ] Docker-compose the server with frontend
+    [x] Permissions in the access groups
+    [x] Register everything on admin page - Done
+    [x] Host the application on the cloud
+    [x] Implement caching for permissions! (It involves lots of db calls right now)
