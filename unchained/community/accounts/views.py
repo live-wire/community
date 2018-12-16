@@ -40,6 +40,18 @@ def login(request):
     return Response(response,
                     status=HTTP_200_OK)
 
+@csrf_exempt
+@api_view(["POST", "GET"])
+@permission_classes((AllowAny,))
+def logout(request):
+    try:
+        request.user.auth_token.delete()
+        print("TOKEN DELETED for User")
+    except Exception as e:
+        print(e)
+    return Response(response,
+                    status=HTTP_200_OK)
+
 
 @csrf_exempt
 @api_view(["GET"])

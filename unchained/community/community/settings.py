@@ -26,8 +26,6 @@ SECRET_KEY = 'mh*bdp!t&7hcq^=qjh(ihe548)wnl82w@lzl0)l0cibeylys4$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -116,11 +114,11 @@ WSGI_APPLICATION = 'community.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'community',
-        'USER': 'communityuser',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': os.environ['DJANGO_UNCHAINED_DB'],
+        'USER': os.environ['DJANGO_UNCHAINED_USER'],
+        'PASSWORD': os.environ['DJANGO_UNCHAINED_PASSWORD'],
+        'HOST': os.environ['DJANGO_UNCHAINED_URL'],
+        'PORT': os.environ['DJANGO_UNCHAINED_PORT'],
     }
 }
 

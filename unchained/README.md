@@ -2,13 +2,14 @@
 ---
 
 ### SETUP INSTRUCTIONS
-- Clone this repository
-- Unzip the _secret-files-zip_ in your `HOME` (`~/`) directory.
-- `activate virtualenvironment`
-- `pip install -r requirements.txt`
-- `cd community/` and finally `gunicorn community.wsgi` 
-- This will start the development server at `localhost:8000/`
-- **[ DOCKER SETUP COMING SOON ]**
+- **[ LOOK AT THE DOCKER SETUP INSTRUCTIONS ]** [here](https://github.com/live-wire/community)
+- Not recommended: (Native setup)
+    - Clone this repository
+    - Unzip the _secret-files-zip_ in your `HOME` (`~/`) directory.
+    - `activate virtualenvironment`
+    - `pip install -r requirements.txt`
+    - `cd community/` and finally `gunicorn community.wsgi` 
+    - This will start the development server at `localhost:8000/`
 
 ---
 ### API INSTRUCTIONS :scroll:
@@ -36,9 +37,12 @@
 - _Can't login etc ?_
     - Update `/etc/postgresql/11/main/pg_hba.conf` from _peer_ to _trust/md5_
     - stack-overflow [thread](https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge)
+- Making PostgreSQL listen to all incoming connections:
+    - StackOverflow [thread](https://dba.stackexchange.com/questions/83984/connect-to-postgresql-server-fatal-no-pg-hba-conf-entry-for-host)
 - **Backup and Restore**:
     - `pg_dump community > dumpfile`
     - `psql -U communityuser dbname < dumpfile`
+
 
 ---
 #### TODOs :snowboarder:

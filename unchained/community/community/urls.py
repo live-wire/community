@@ -27,7 +27,7 @@ from rest_framework.documentation import include_docs_urls
 # djauth/urls.py
 from django.contrib import admin
 from django.views.generic.base import TemplateView
-from accounts.views import login
+from accounts.views import login, logout
 from django.conf.urls.static import static
 
 urlpatterns = [
@@ -36,6 +36,7 @@ urlpatterns = [
     url(r'^docs/', include_docs_urls(title='My API title', public=False, authentication_classes=[],
                                     permission_classes=[])),
     path ('auth/login', login),
+    path ('auth/logout', logout),
     path('redocs/', include('redocs.urls')),
     url(r'^', include('institution.urls')),
     url(r'^', include('course.urls')),
