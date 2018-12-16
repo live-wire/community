@@ -103,7 +103,7 @@ const AllStudents = props => {
 	return (
 		<Container>
 			<Heading>Students</Heading>
-			<DataTable headers={headers} rows={[]} loading={loading} />
+			<DataTable headers={headers} rows={rows} />
 		</Container>
 	);
 };

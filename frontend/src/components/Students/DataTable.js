@@ -16,7 +16,7 @@ class DataTable extends React.Component {
 	}
 
 	render() {
-		const {headers, rows, loading} = this.props;
+		const {headers, rows} = this.props;
 
 		return (
 			<Table>
@@ -27,7 +27,7 @@ class DataTable extends React.Component {
 				</Table.Header>
 
 				<Table.Body style={{ minHeight: '500px' }}>
-					{!loading && rows.map(row => <Table.Row key={row.id}>
+					{rows.map(row => <Table.Row key={row.id}>
 						{headers.map(header => <Table.Cell key={header.id}>{row[header.name]}</Table.Cell>)}
 					</Table.Row>)}
 

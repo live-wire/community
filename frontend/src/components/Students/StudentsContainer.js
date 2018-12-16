@@ -13,28 +13,28 @@ class StudentsContainer extends React.Component {
 
 	render() {
 		const { students, loading } = this.state;
-		return <AllStudents students={students} loading={loading}/>;
+		return <AllStudents students={students} />;
 	}
 
 	componentDidMount() {
-		// const {token} = this.props;
-		// getStudents(token)
-		// 	.then(res => {
-		// 		console.log(res);
-		// 		debugger
-		// 		// this.setState({
-		// 		// 	students: res.data,
-		// 		// 	loading: false
-		// 		// });
-		// 	})
-		// 	.catch(error => {
-		// 		console.log(error);
-		// 		debugger
-		// 		// this.setState({
-		// 		// 	error: error.message,
-		// 		// 	loading: false
-		// 		// });
-		// 	});
+		const {token} = this.props;
+		getStudents(token)
+			.then(res => {
+				console.log(res);
+				debugger
+				// this.setState({
+				// 	students: res.data,
+				// 	loading: false
+				// });
+			})
+			.catch(error => {
+				console.log(error);
+				debugger
+				// this.setState({
+				// 	error: error.message,
+				// 	loading: false
+				// });
+			});
 	}
 }
 
