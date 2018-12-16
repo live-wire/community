@@ -1,0 +1,38 @@
+version: '3'
+services:
+  cache:
+     image: memcached
+     ports:
+       - "11211:11211"
+     entrypoint:
+      - memcached
+      - -m 64
+  django:
+    build:
+      context: ./unchained
+      dockerfile: Dockerfile
+    env_file:
+      - communitysecrets/community.env
+    command: bash -c "cd unchained/community && python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    container_name: unchained
+    volumes:
+      - .:/unchained
+    ports:
+      - "8000:8000"
+    depends_on:
+      - cache
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    command: npm run dev
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "8080:8080"
+    depends_on:
+      - django
+
+# python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000
+# uwsgi --http :8000 --module community.wsgi
