@@ -49,6 +49,9 @@ def logout(request):
         print("TOKEN DELETED for User")
     except Exception as e:
         print(e)
+    response = {
+        'detail': 'Logged Out'
+    }
     return Response(response,
                     status=HTTP_200_OK)
 

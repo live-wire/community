@@ -52,6 +52,7 @@
     [ ] Use GUnicorn
     [ ] Dockerize the server
     [ ] Docker-compose the server with frontend
+    [ ] Add `logout` path
     [x] Permissions in the access groups
     [x] Register everything on admin page - Done
     [x] Host the application on the cloud
