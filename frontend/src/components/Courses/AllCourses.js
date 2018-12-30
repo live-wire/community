@@ -32,42 +32,32 @@ const Heading = styled.div`
 const headers = [
 	{
 		id: 1,
-		label: 'Department',
-		name: 'department',
+		label: 'Title',
+		name: 'title',
 	},
 	{
 		id: 2,
-		label: 'Institution',
-		name: 'institution',
+		label: 'URL',
+		name: 'url',
 	},
 	{
 		id: 3,
-		label: 'UID',
-		name: 'uid',
+		label: 'Code',
+		name: 'code',
 	},
 	{
 		id: 4,
-		label: 'First Name',
-		name: 'first_name',
-	},
-	{
-		id: 5,
-		label: 'Last Name',
-		name: 'last_name',
-	},
-	{
-		id: 6,
-		label: 'Email',
-		name: 'email',
-	},
+		label: 'Institution',
+		name: 'institution',
+	}
 ];
 
-const AllStudents = props => {
-	const { students, next, prev, loading } = props;
+const AllCourses = props => {
+	const { courses, next, prev, loading } = props;
 
 	return (
 		<Container>
-			<Heading>Students</Heading>
+			<Heading>Courses</Heading>
 			{loading && (
 				<LoaderContainer>
 					<ClipLoader
@@ -77,9 +67,9 @@ const AllStudents = props => {
 					/>
 				</LoaderContainer>
 			)}
-			{!loading && <DataTable headers={headers} rows={students} prev={prev} next={next}/>}
+			{!loading && <DataTable headers={headers} rows={courses} prev={prev} next={next}/>}
 		</Container>
 	);
 };
 
-export default AllStudents;
+export default AllCourses;

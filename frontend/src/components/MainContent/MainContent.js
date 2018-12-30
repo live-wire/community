@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Dashboard from '../Dashboard/Dashboard';
 import StudentsContainer from '../Students/StudentsContainer';
 import Teachers from '../Teachers/Teachers';
-import Courses from '../Courses/Courses';
+import CoursesContainer from '../Courses/CoursesContainer';
 
 const Container = styled.div`
 	width: 100%;
@@ -22,9 +22,9 @@ class MainContent extends React.Component {
 				<Switch>
 					<Route exact path="/" render={() => <Redirect to="/dashboard" />} />
 					<Route exact path="/home/dashboard" component={Dashboard} />
-					<Route exact path="/home/students" render={props => <StudentsContainer {...props} token={token} />}/>
+					<Route exact path="/home/students" render={props => <StudentsContainer {...props} token={token} />} />
 					<Route exact path="/home/teachers" component={Teachers} />
-					<Route exact path="/home/courses" component={Courses} />
+					<Route exact path="/home/courses" render={props => <CoursesContainer {...props} token={token} />} />
 				</Switch>
 			</Container>
 		);
