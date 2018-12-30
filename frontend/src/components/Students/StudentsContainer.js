@@ -7,33 +7,32 @@ class StudentsContainer extends React.Component {
 		super(props);
 		this.state = {
 			students: [],
-			loading: false
+			next: null,
+			previous: null,
+			loading: true
 		};
 	}
 
 	render() {
-		const { students, loading } = this.state;
-		return <AllStudents students={students} />;
+		const { students, next, prev, loading } = this.state;
+		return <AllStudents students={students} next={next} prev={prev} loading={loading} />;
 	}
 
 	componentDidMount() {
 		const {token} = this.props;
 		getStudents(token)
 			.then(res => {
-				console.log(res);
-				debugger
-				// this.setState({
-				// 	students: res.data,
-				// 	loading: false
-				// });
+				this.setState({
+					students: res.data.results,
+					prev: res.data.prev,
+					next: res.data.next,
+					loading: false
+				});
 			})
 			.catch(error => {
-				console.log(error);
-				debugger
-				// this.setState({
-				// 	error: error.message,
-				// 	loading: false
-				// });
+				this.setState({
+					loading: false
+				});
 			});
 	}
 }
