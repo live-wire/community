@@ -12,7 +12,7 @@ const Container = styled.div`
 
 const SidebarWrapper = styled.div`
 	flex-basis: 200px;
-	heigh: 100%;
+	height: 100%;
 	flex-grow: 0;
 	flex-shrink: 0;
 `;
@@ -20,6 +20,7 @@ const SidebarWrapper = styled.div`
 const MainContentWrapper = styled.div`
 	flex-basis: calc(100% - 200px);
 	height: 100%;
+	overflow-y: scroll;
 	flex-grow: 0;
 	flex-shrink: 0;
 `;

@@ -18,7 +18,7 @@ injectGlobal`
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 400;
-		line-height: 1.5;
+		line-height: 1.5em;
 		font-family: 'helvetica', 'arial', sans-serif;
 		color: #676767;
 		background: #ffffff;

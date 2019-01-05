@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ClipLoader } from 'react-spinners';
-import DataTable from '../../framework/components/DataTable';
+import Course from './SingleCourse';
 
 const Container = styled.div`
 	width: 100%;
@@ -29,28 +29,13 @@ const Heading = styled.div`
 	margin-bottom: 20px;
 `;
 
-const headers = [
-	{
-		id: 1,
-		label: 'Title',
-		name: 'title',
-	},
-	{
-		id: 2,
-		label: 'URL',
-		name: 'url',
-	},
-	{
-		id: 3,
-		label: 'Code',
-		name: 'code',
-	},
-	{
-		id: 4,
-		label: 'Institution',
-		name: 'institution',
-	}
-];
+const CoursesContainer = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+`;
 
 const AllCourses = props => {
 	const { courses, next, prev, loading } = props;
@@ -67,7 +52,14 @@ const AllCourses = props => {
 					/>
 				</LoaderContainer>
 			)}
-			{!loading && <DataTable headers={headers} rows={courses} prev={prev} next={next}/>}
+			{/* {!loading && <DataTable headers={headers} rows={courses} prev={prev} next={next}/>} */}
+			{!loading && (
+				<CoursesContainer>
+					{courses.map(course => <Course key={course.id} {...course} />)}
+					{courses.map(course => <Course key={course.id} {...course} />)}
+					{courses.map(course => <Course key={course.id} {...course} />)}
+				</CoursesContainer>
+			)}
 		</Container>
 	);
 };
