@@ -1,10 +1,8 @@
-import axios from 'axios';
+import API from '../../framework/api';
 
 export const login = (username, password) => {
-	return axios.post('http://localhost:8000/auth/login', {
+	return API.post('auth/login', {
 		username,
 		password
-	}, {headers: {
-		'Content-Type': 'application/json'
-	}});
+	});
 }

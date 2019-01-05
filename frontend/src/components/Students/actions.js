@@ -1,10 +1,5 @@
-import axios from 'axios';
+import API from '../../framework/api';
 
 export const getStudents = token => {
-	return axios.get('http://localhost:8000/student/', {
-		headers: {
-			'Content-Type': 'application/json',
-			'Authorization': `Token ${token}`
-		}
-	});
+	return API.get('student/');
 }

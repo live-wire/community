@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import PrivateRoute from '../../framework/components/PrivateRoute';
 import Home from '../Home/Home';
 import LoginContainer from '../Login/LoginContainer';
+import {setAuthHeader} from '../../framework/api';
 
 class App extends React.Component {
 	constructor(props) {
@@ -32,6 +33,7 @@ class App extends React.Component {
 
 	logUserIn(token) {
 		this.saveTokenInLocalStorage('communityToken', token);
+		setAuthHeader(token);
 		this.setState({
 			isLoggedIn: true,
 			token
