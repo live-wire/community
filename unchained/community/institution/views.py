@@ -16,8 +16,11 @@ from rest_framework.decorators import action
 from community.csrfsession import CsrfExemptSessionAuthentication
 from .serializers import InstitutionSerializer, UserSerializer
 from .models import Institution
-from community.permissions import belongsToInstitution, isInstitutionAdmin
 from rest_framework.exceptions import PermissionDenied
+from community.permissions import isInstitutionAdmin, getUserInstitution, belongsToInstitution, canUpdateProfile
+from community.filters import applyUserFilters, applyInstitutionFilters
+from community.mappings import generateKeys
+from django.db.models import Q
 
 class InstitutionViewSet(viewsets.ModelViewSet):
     """
@@ -31,15 +34,12 @@ class InstitutionViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
     authentication_classes = (CsrfExemptSessionAuthentication, )
 
-    # def list(self, request, *args, **kwargs):
-    #     print('list institutions', request.user)
-    #     # queryset = Institution.objects.all()
-    #     # serializer_context = {
-    #     #     'request': Request(request._request),
-    #     # }
-    #     # serializer = InstitutionSerializer(queryset, many=True, context=serializer_context)
-    #     return super().list(self, request, *args, **kwargs)
-    #     # return Response(serializer.data)
+    def list(self, request, *args, **kwargs):
+        if request.user.is_superuser:
+            self.queryset = applyInstitutionFilters(request, Institution, *args, **kwargs)
+        response = super(InstitutionViewSet, self).list(request, *args, **kwargs)
+        response = generateKeys(response, self.serializer_class)
+        return response
 
     def retrieve(self, request, *args, **kwargs):
         if not belongsToInstitution(request, self.get_object()):

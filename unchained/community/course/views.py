@@ -20,6 +20,7 @@ from .serializers import CourseSerializer, CourseListSerializer
 from .models import Course
 from community.permissions import belongsToInstitution, isInstitutionAdmin, canUpdateCourse, canRetrieveCourse, getUserInstitution
 from rest_framework.exceptions import PermissionDenied
+from community.mappings import generateKeys
 
 class CourseViewSet(viewsets.ModelViewSet):
 	"""
@@ -61,7 +62,9 @@ class CourseViewSet(viewsets.ModelViewSet):
 			self.queryset = Course.objects.all()
 		else:
 			self.queryset = Course.objects.filter(institution=getUserInstitution(request))
-		return super(CourseViewSet, self).list(request, *args, **kwargs)
+		response = super(CourseViewSet, self).list(request, *args, **kwargs)
+		response = generateKeys(response, self.serializer_class)
+		return response
 
 	def create(self, request, *args, **kwargs):
 		if not isInstitutionAdmin(request, getUserInstitution(request)):

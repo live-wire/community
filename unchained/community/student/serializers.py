@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from teacher.models import Teacher
 from .models import Student
 
-
 class StudentSerializer(serializers.HyperlinkedModelSerializer):
 	# announcements = serializers.HyperlinkedRelatedField(many=True, view_name='announcement-detail', read_only=True)
 	# instructors = serializers.HyperlinkedRelatedField(many=True, view_name='teacher-detail', read_only=True)

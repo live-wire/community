@@ -5,7 +5,7 @@
 - **The first time**
     - `git clone` this project
     - `cd community/`
-    - Unzip the <secrets-zip> in the root of the project
+    - Unzip the `<secrets-zip>` in the root of the project
 - **Every time**
     - `docker-compose up --build`
     - :bomb: One command! That's it!

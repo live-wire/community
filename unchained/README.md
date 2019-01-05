@@ -30,6 +30,7 @@
         - `/administrator/`, `/administrator/<id>/`
         - `/course/`, `/course/<id>/`
         - `/announcement/`, `/announcement/<id>/`
+- Mappings for Backend-UI fields (Display Names etc) can be found in `unchained/community/community/mappings.py`
 
 ---
 ### PostgreSQL INSTRUCTIONS :spades:

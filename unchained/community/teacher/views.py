@@ -21,6 +21,7 @@ from .models import Teacher
 from rest_framework.exceptions import PermissionDenied
 from community.permissions import isInstitutionAdmin, getUserInstitution, belongsToInstitution, canUpdateProfile
 from community.filters import applyUserFilters
+from community.mappings import generateKeys
 
 class TeacherViewSet(viewsets.ModelViewSet):
 	"""
@@ -41,7 +42,9 @@ class TeacherViewSet(viewsets.ModelViewSet):
 			self.queryset = applyUserFilters(request, Teacher)
 		else:
 			self.queryset = applyUserFilters(request, Teacher, institution=getUserInstitution(request))
-		return super(TeacherViewSet, self).list(request, *args, **kwargs)
+		response = super(TeacherViewSet, self).list(request, *args, **kwargs)
+		response = generateKeys(response, self.serializer_class)
+		return response
 
 	def create(self, request, *args, **kwargs):
 		if not isInstitutionAdmin(request, getUserInstitution(request)):

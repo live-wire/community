@@ -21,6 +21,7 @@ from .models import FileUpload
 from rest_framework.exceptions import PermissionDenied
 from community.permissions import isInstitutionAdmin, belongsToInstitution, getUserInstitution, getUserCourses
 from community.permissions import canUpdateCourse, canRetrieveCourse
+from community.mappings import generateKeys
 
 class FileUploadViewSet(viewsets.ModelViewSet):
 	"""
@@ -41,7 +42,9 @@ class FileUploadViewSet(viewsets.ModelViewSet):
 			self.queryset = FileUpload.objects.all()
 		else:
 			self.queryset = FileUpload.objects.filter(institution=getUserInstitution(request), course__in=getUserCourses(request).all())
-		return super(FileUploadViewSet, self).list(request, *args, **kwargs)
+		response = super(FileUploadViewSet, self).list(request, *args, **kwargs)
+		response = generateKeys(response, self.serializer_class)
+		return response
 
 	def create(self, request, *args, **kwargs):
 		if not canUpdateCourse(request, self.get_object().institution, self.get_object().course):

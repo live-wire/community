@@ -21,6 +21,7 @@ from .models import Administrator
 from community.permissions import belongsToInstitution, isInstitutionAdmin, getUserInstitution
 from rest_framework.exceptions import PermissionDenied
 from community.filters import applyUserFilters
+from community.mappings import generateKeys
 
 class AdministratorViewSet(viewsets.ModelViewSet):
 	"""
@@ -41,7 +42,9 @@ class AdministratorViewSet(viewsets.ModelViewSet):
 			self.queryset = applyUserFilters(request, Administrator)
 		else:
 			self.queryset = applyUserFilters(request, Administrator, institution=getUserInstitution(request))
-		return super(AdministratorViewSet, self).list(request, *args, **kwargs)
+		response = super(AdministratorViewSet, self).list(request, *args, **kwargs)
+		response = generateKeys(response, self.serializer_class)
+		return response
 
 	def create(self, request, *args, **kwargs):
 		if not isInstitutionAdmin(request, getUserInstitution(request)):

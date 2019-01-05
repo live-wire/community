@@ -21,6 +21,7 @@ from .models import Student
 from rest_framework.exceptions import PermissionDenied
 from community.permissions import isInstitutionAdmin, belongsToInstitution, getUserInstitution, canUpdateProfile
 from community.filters import applyUserFilters
+from community.mappings import generateKeys
 
 class StudentViewSet(viewsets.ModelViewSet):
 	"""
@@ -43,8 +44,17 @@ class StudentViewSet(viewsets.ModelViewSet):
 		else:
 			self.queryset = applyUserFilters(request, Student, institution=getUserInstitution(request))
 			# Student.objects.filter(institution=getUserInstitution(request))
-		return super(StudentViewSet, self).list(request, *args, **kwargs)
+		response = super(StudentViewSet, self).list(request, *args, **kwargs)
+		response = generateKeys(response, self.serializer_class)
+		return response
 
+	def get_serializer_context(self):
+		context = super(StudentViewSet, self).get_serializer_context()
+		context.update({
+			"exclude_email_list": ['test@test.com', 'test1@test.com']
+			# extra data
+		})
+		return context
 	def create(self, request, *args, **kwargs):
 		if not isInstitutionAdmin(request, getUserInstitution(request)):
 			raise PermissionDenied(detail='User is not an admin_user', code=None)
