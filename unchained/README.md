@@ -30,7 +30,11 @@
         - `/administrator/`, `/administrator/<id>/`
         - `/course/`, `/course/<id>/`
         - `/announcement/`, `/announcement/<id>/`
-- Mappings for Backend-UI fields (Display Names etc) can be found in `unchained/community/community/mappings.py`
+
+#### Utilities in list-view: (for paths `/institution/`, `/teacher/` etc.)
+- `keys` field contains Mappings for Backend-UI fields (Display Names etc) can be found in `unchained/community/community/mappings.py`
+- Pagination: *there will be previous and next* with the set of results. Page size can be modified from the backend!
+
 
 ---
 ### PostgreSQL INSTRUCTIONS :spades:
