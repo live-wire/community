@@ -5,7 +5,9 @@ import Course from './SingleCourse';
 
 const Container = styled.div`
 	width: 100%;
+	height: 100%;
 	padding: 20px;
+	overflow-y: scroll;
 `;
 
 const LoaderContainer = styled.div`

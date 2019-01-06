@@ -1,7 +1,7 @@
 import React from 'react';
 import AllTeachers from './AllTeachers';
 import {getTeachers} from './actions';
-
+import withSidebar from '../../framework/hoc/withSidebar';
 class TeachersContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -37,4 +37,4 @@ class TeachersContainer extends React.Component {
 	}
 }
 
-export default TeachersContainer;
+export default withSidebar(TeachersContainer);

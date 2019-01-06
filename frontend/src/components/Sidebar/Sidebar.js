@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import SidebarDropdownItem from './SidebarDropdownItem';
 
 const StyledSidebar = styled.div`
-	width: 100%;
+	width: 200px;
 	height: 100%;
 	overflow: auto;
 	background-color: #031b4d;
@@ -34,20 +34,16 @@ Sidebar.defaultProps = {
 			label: 'Manage',
 			subItems: [
 				{
-					label: 'Dashboard',
-					to: '/home/dashboard'
-				},
-				{
 					label: 'Students',
-					to: '/home/students'
+					to: '/student'
 				},
 				{
 					label: 'Teachers',
-					to: '/home/teachers'
+					to: '/teacher'
 				},
 				{
 					label: 'Courses',
-					to: '/home/courses'
+					to: '/course'
 				}
 			]
 		},

@@ -1,7 +1,7 @@
 import React from 'react';
 import AllCourses from './AllCourses';
 import {getCourses} from './actions';
-
+import withSidebar from '../../framework/hoc/withSidebar';
 class CoursesContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -37,4 +37,4 @@ class CoursesContainer extends React.Component {
 	}
 }
 
-export default CoursesContainer;
+export default withSidebar(CoursesContainer);

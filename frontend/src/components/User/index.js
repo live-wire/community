@@ -7,7 +7,7 @@ class User extends React.Component {
 
 		this.state = {
 			defaultRoute: '/student',
-			isLoggedIn: false,
+			isLoggedIn: true,
 			token: null,
 		}
 	}
