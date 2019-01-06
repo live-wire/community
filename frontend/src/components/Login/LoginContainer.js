@@ -15,12 +15,9 @@ class LoginContainer extends Component {
 			error: null,
 			loading: false,
 		};
-
-		this.handleInputChange = this.handleInputChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleInputChange(event) {
+	handleInputChange = event => {
 		const { value, name } = event.target;
 
 		this.setState({
@@ -34,9 +31,9 @@ class LoginContainer extends Component {
 		return !loading && isValidUser(user) && isValidPassword(password);
 	}
 
-	handleSubmit(event) {
-		const { history } = this.props;
+	handleSubmit = event => {
 		const {user, password} = this.state;
+		const { logUserIn } = this.props;
 
 		this.setState({
 			loading: true
@@ -44,7 +41,6 @@ class LoginContainer extends Component {
 
 		login(user, password)
 			.then(res => {
-				const { logUserIn } = this.props;
 				logUserIn(res.data.token);
 			})
 			.catch(err => {

@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import App from './components/App/App';
+import { Grommet } from 'grommet';
+import App from './components/App';
 import './globalStyle';
 import 'semantic-ui-css/semantic.min.css';
 
 ReactDOM.render(
 	<Router>
-		<App />
+		<Grommet plain>
+			<App />
+		</Grommet>
 	</Router>,
 	document.getElementById('root')
 );

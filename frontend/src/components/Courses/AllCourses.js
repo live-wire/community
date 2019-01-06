@@ -52,7 +52,6 @@ const AllCourses = props => {
 					/>
 				</LoaderContainer>
 			)}
-			{/* {!loading && <DataTable headers={headers} rows={courses} prev={prev} next={next}/>} */}
 			{!loading && (
 				<CoursesContainer>
 					{courses.map(course => <Course key={course.id} {...course} />)}

@@ -4,11 +4,12 @@ import styled from 'styled-components';
 const StyledCourse = styled.div`
 	box-sizing: border-box;
 	width: 48.5%;
-	border: 1px solid red;
 	margin-top: 20px;
 	min-height: 300px;
-	border-radius: 5px;
 	cursor: pointer;
+	box-shadow: rgba(37, 11, 54, 0.04) 0px 2px 0px;
+	border: 1px solid rgb(209, 202, 216);
+	border-radius: 5px;
 
 	&:first-child, &:nth-child(2) {
 		margin-top: 0;
