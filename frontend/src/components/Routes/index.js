@@ -4,6 +4,9 @@ import LoginContainer from '../Login';
 import StudentsContainer from '../Students';
 import TeachersContainer from '../Teachers';
 import CoursesContainer from '../Courses';
+import StudentProfile from '../Profile/Student';
+import TeacherProfile from '../Profile/Teacher';
+import CourseProfile from '../Profile/Course';
 
 class Routes extends React.Component {
 	render() {
@@ -28,13 +31,28 @@ class Routes extends React.Component {
 				/>
 				<Route
 						exact
+						path='/student/:studentId'
+						render={props => isLoggedIn ? <StudentProfile {...props} /> : <Redirect to='/login' />}
+				/>
+				<Route
+						exact
 						path='/course'
 						render={props => isLoggedIn ? <CoursesContainer {...props} /> : <Redirect to='/login' />}
 				/>
 				<Route
 						exact
+						path='/course/:courseId'
+						render={props => isLoggedIn ? <CourseProfile {...props} /> : <Redirect to='/login' />}
+				/>
+				<Route
+						exact
 						path='/teacher'
 						render={props => isLoggedIn ? <TeachersContainer {...props} />: <Redirect to='/login' />}
+				/>
+				<Route
+						exact
+						path='/teacher/:teacherId'
+						render={props => isLoggedIn ? <TeacherProfile {...props} /> : <Redirect to='/login' />}
 				/>
 			</div>
 		);

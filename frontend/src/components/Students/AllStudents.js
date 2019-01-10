@@ -65,7 +65,7 @@ const headers = [
 ];
 
 const AllStudents = props => {
-	const { students, next, prev, loading } = props;
+	const { students, next, prev, loading} = props;
 
 	return (
 		<Container>
@@ -79,7 +79,7 @@ const AllStudents = props => {
 					/>
 				</LoaderContainer>
 			)}
-			{!loading && <DataTable headers={headers} rows={students} prev={prev} next={next}/>}
+			{!loading && <DataTable headers={headers} rows={students} prev={prev} next={next} />}
 		</Container>
 	);
 };

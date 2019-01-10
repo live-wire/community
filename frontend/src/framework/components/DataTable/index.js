@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import {Icon, Menu, Table} from 'semantic-ui-react';
 
 class DataTable extends React.Component {
@@ -7,7 +8,7 @@ class DataTable extends React.Component {
 	}
 
 	render() {
-		const {headers, rows, prev, next} = this.props;
+		const {headers, rows, prev, next, history, match} = this.props;
 
 		return (
 			<Table>
@@ -18,7 +19,10 @@ class DataTable extends React.Component {
 				</Table.Header>
 
 				<Table.Body style={{ minHeight: '500px' }}>
-					{rows.map(row => <Table.Row key={row.id}>
+					{rows.map(row => <Table.Row style={{cursor: 'pointer'}}
+						key={row.id}
+						onClick={() => history.push(`${match.url}/${row.id}`)}
+					>
 						{headers.map(header => <Table.Cell key={header.id}>{row[header.name]}</Table.Cell>)}
 					</Table.Row>)}
 
@@ -43,4 +47,4 @@ class DataTable extends React.Component {
 	}
 }
 
-export default DataTable;
+export default withRouter(DataTable);
