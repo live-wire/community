@@ -6,13 +6,7 @@ import Flex from '../../../framework/components/Flex';
 import Box from '../../../framework/components/Box';
 import FormSection from '../../../framework/components/Form/FormSection';
 import FormLabel from '../../../framework/components/Form/FormLabel';
-
-const Container = styled.div`
-	width: 100%;
-	height: 100%;
-	padding: 20px;
-	overflow-y: scroll;
-`;
+import withHeader from '../../../framework/hoc/withHeader';
 
 const forms = [
 	{
@@ -95,7 +89,7 @@ const forms = [
 class StudentProfile extends React.Component {
 	render() {
 		return (
-			<Container>
+			<div className="StudentProfile">
 				<form>
 					{forms.map(form => (
 						<FormSection key={form.title} title={form.title}>
@@ -119,9 +113,9 @@ class StudentProfile extends React.Component {
 						</FormSection>
 					))}
 				</form>
-			</Container>
+			</div>
 		);
 	}
 }
 
-export default withSidebar(StudentProfile);
+export default withSidebar(withHeader(StudentProfile));
