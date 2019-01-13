@@ -2,11 +2,10 @@ import React from 'react';
 import {Input} from 'semantic-ui-react';
 import styled from 'styled-components';
 import withSidebar from '../../../framework/hoc/withSidebar';
-import Flex from '../Flex';
-import Box from '../Box';
-import FormSection from '../FormSection';
-import FormLabel from '../FormLabel';
-import { fileURLToPath } from 'url';
+import Flex from '../../../framework/components/Flex';
+import Box from '../../../framework/components/Box';
+import FormSection from '../../../framework/components/Form/FormSection';
+import FormLabel from '../../../framework/components/Form/FormLabel';
 
 const Container = styled.div`
 	width: 100%;
