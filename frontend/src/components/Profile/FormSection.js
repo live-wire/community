@@ -3,6 +3,7 @@ import Box from './Box';
 
 const FormSection = ({title, children}) => (
 	<Box noPadding
+		marginBottom
 		borderAll
 		borderColor="rgb(209, 202, 216)"
 		borderRadius="4px"

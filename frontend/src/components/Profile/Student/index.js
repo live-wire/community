@@ -6,6 +6,7 @@ import Flex from '../Flex';
 import Box from '../Box';
 import FormSection from '../FormSection';
 import FormLabel from '../FormLabel';
+import { fileURLToPath } from 'url';
 
 const Container = styled.div`
 	width: 100%;
@@ -14,133 +15,114 @@ const Container = styled.div`
 	overflow-y: scroll;
 `;
 
+const forms = [
+	{
+		title: 'Personal Details',
+		fields: [
+			{
+				label: 'Nickname',
+				placeholder: 'Nickname'
+			},
+			{
+				label: 'Hometown',
+				placeholder: 'Hometown'
+			},
+			{
+				label: 'Homepage',
+				placeholder: 'Homepage'
+			}
+		]
+	},
+	{
+		title: 'Social Networks',
+		fields: [
+			{
+				label: 'Facebook',
+				placeholder: 'Facebook'
+			},
+			{
+				label: 'Google',
+				placeholder: 'Google'
+			},
+			{
+				label: 'Twitter',
+				placeholder: 'Twitter'
+			},
+			{
+				label: 'Linkedin',
+				placeholder: 'Linkedin'
+			}
+		]
+	},
+	{
+		title: 'Contact Information',
+		fields: [
+			{
+				label: 'Email',
+				placeholder: 'Email'
+			},
+			{
+				label: 'Phone',
+				placeholder: 'Phone'
+			},
+			{
+				label: 'City',
+				placeholder: 'City'
+			},
+			{
+				label: 'State',
+				placeholder: 'State'
+			},
+			{
+				label: 'Country',
+				placeholder: 'Country'
+			}
+		]
+	},
+	{
+		title: 'Education and Work',
+		fields: [
+			{
+				label: 'High School',
+				placeholder: 'High School'
+			},
+			{
+				label: 'University',
+				placeholder: 'University'
+			}
+		]
+	}
+];
 class StudentProfile extends React.Component {
 	render() {
 		return (
 			<Container>
-				<FormSection title="Personal Details">
-					<Box borderBottom>
-						<Flex.Container
-							flexDirection="row"
-							justifyContent="space-between"
-							alignItems="center">
-							<Flex.Child
-								flexBasis="50%">
-								<FormLabel>Nickname</FormLabel>
-							</Flex.Child>
-							<Flex.Child
-								flexBasis="50%">
-								<Input placeholder="Nickname" fluid/>
-							</Flex.Child>
-						</Flex.Container>
-					</Box>
-					<Box borderBottom>
-						<Flex.Container
-							flexDirection="row"
-							justifyContent="space-between"
-							alignItems="center">
-							<Flex.Child
-								flexBasis="50%">
-								<FormLabel>Homepage</FormLabel>
-							</Flex.Child>
-							<Flex.Child
-								flexBasis="50%">
-								<Input placeholder="Homepage" fluid/>
-							</Flex.Child>
-						</Flex.Container>
-					</Box>
-					<Box>
-						<Flex.Container
-							flexDirection="row"
-							justifyContent="space-between"
-							alignItems="center">
-							<Flex.Child
-								flexBasis="50%">
-								<FormLabel>Hometown</FormLabel>
-							</Flex.Child>
-							<Flex.Child
-								flexBasis="50%">
-								<Input placeholder="Hometown" fluid/>
-							</Flex.Child>
-						</Flex.Container>
-					</Box>
-				</FormSection>
+				<form>
+					{forms.map(form => (
+						<FormSection key={form.title} title={form.title}>
+							{form.fields.map(field => (
+								<Box key={field.label} borderBottom>
+									<Flex.Container
+										flexDirection="row"
+										justifyContent="space-between"
+										alignItems="center">
+										<Flex.Child
+											flexBasis="50%">
+											<FormLabel>{field.label}</FormLabel>
+										</Flex.Child>
+										<Flex.Child
+											flexBasis="50%">
+											<Input placeholder={field.placeholder} fluid/>
+										</Flex.Child>
+									</Flex.Container>
+								</Box>
+							))}
+						</FormSection>
+					))}
+				</form>
 			</Container>
 		);
 	}
 }
 
 export default withSidebar(StudentProfile);
-
-
-// <div>
-			// 	<FormSection>
-			// 		<FormSectionHeader>Personal Details</FormSectionHeader>
-			// 		<StyledFormFieldContainer>
-			// 			<StyledLabel>Nickname</StyledLabel>
-			// 			<StyledFormField>
-			// 				<Input placeholder="Nickname" fluid />
-			// 			</StyledFormField>
-			// 		</StyledFormFieldContainer>
-
-			// 		<StyledFormFieldContainer>
-			// 			<StyledLabel>Hometown</StyledLabel>
-			// 			<StyledFormField>
-			// 				<Input placeholder="Hometown" fluid />
-			// 			</StyledFormField>
-			// 		</StyledFormFieldContainer>
-
-			// 		<StyledFormFieldContainer>
-			// 			<StyledLabel>Homepage</StyledLabel>
-			// 			<StyledFormField>
-			// 				<Input placeholder="Homepage" fluid />
-			// 			</StyledFormField>
-			// 		</StyledFormFieldContainer>
-			// 	</FormSection>
-
-			// 	<Flex direction="row"
-
-			/* <Segment>
-				<StyledLabel attached="top" size="big">Personal</StyledLabel>
-				<Form>
-					<Form.Field inline>
-						<label>Nickname</label>
-						<input placeholder="Nickname" fluid />
-					</Form.Field>
-					<Form.Field inline>
-						<label>Hometown</label>
-						<input placeholder="Hometown" fluid />
-					</Form.Field>
-					<Form.Field inline>
-						<label>Homepage</label>
-						<input placeholder="Homepage" fluid />
-					</Form.Field>
-				</Form>
-				<Input placeholder="Hometown" fluid />
-				<Input placeholder="HomePage" fluid />
-			</Segment>
-			<Segment>
-				<StyledLabel attached="top" size="big">Social Networks</StyledLabel>
-				<Input placeholder="Facebook" fluid />
-				<Input placeholder="Google" fluid />
-				<Input placeholder="Twitter" fluid />
-				<Input placeholder="Linkedin" fluid />
-			</Segment>
-			<Segment>
-				<StyledLabel attached="top" size="big">Contact Information</StyledLabel>
-				<Input placeholder="Email" fluid />
-				<Input placeholder="Address 1" fluid />
-				<Input placeholder="Home Phone" fluid />
-				<Input placeholder="Address 2" fluid />
-				<Input placeholder="Business Phone" fluid />
-				<Input placeholder="City" fluid />
-			</Segment>
-			<Segment>
-				<StyledLabel attached="top" size="big">Education and Work</StyledLabel>
-				<Input placeholder="Employer" fluid />
-				<Input placeholder="High School" fluid />
-				<Input placeholder="Position" fluid />
-				<Input placeholder="University" fluid />
-			</Segment> */
-
-		// </div>

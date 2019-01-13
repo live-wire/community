@@ -9,6 +9,7 @@ const StyledDiv = styled.div`
 	background-color: ${props => props.backgroundColor ? props.backgroundColor: '#fff'};
 	border-radius: ${props => props.borderRadius ? props.borderRadius : '0'};
 	box-shadow: ${props => props.boxShadow ? props.boxShadow : 'none'};
+	margin: ${props => props.marginAll ? '20px' : `${props.marginTop ? '20px': '0'} ${props.marginRight ? '20px' : '0'} ${props.marginBottom ? '20px' : '0'} ${props.marginLeft ? '20px' : '0'}`};
 `;
 
 const Box = ({children, ...rest}) => (
