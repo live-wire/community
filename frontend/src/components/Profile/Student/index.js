@@ -5,7 +5,7 @@ import withSidebar from '../../../framework/hoc/withSidebar';
 import Flex from '../../../framework/components/Flex';
 import Box from '../../../framework/components/Box';
 import FormSection from '../../../framework/components/Form/FormSection';
-import FormLabel from '../../../framework/components/Form/FormLabel';
+import Label from '../../../framework/components/Label';
 import withHeader from '../../../framework/hoc/withHeader';
 
 const forms = [
@@ -101,7 +101,7 @@ class StudentProfile extends React.Component {
 										alignItems="center">
 										<Flex.Child
 											flexBasis="50%">
-											<FormLabel>{field.label}</FormLabel>
+											<Label>{field.label}</Label>
 										</Flex.Child>
 										<Flex.Child
 											flexBasis="50%">
