@@ -1,16 +1,19 @@
 import axios from 'axios';
+import { getKey } from '../../utils/localStorage';
 
-const instance =  axios.create({
-	baseURL: 'http://localhost:8000/',
+const instance = axios.create({
+	baseURL: 'http://localhost:8000/'
 });
 
-const setAuthHeader = token => instance.defaults.headers.common['Authorization'] = `Token ${token}`;
+instance.interceptors.request.use(
+	config => {
+		const token = getKey('token');
+		if (token) {
+			config.headers.common.Authorization = `Token ${token}`;
+		}
+		return config;
+	},
+	err => Promise.reject(err)
+);
 
-const communityToken = localStorage.getItem('communityToken');
-
-if(communityToken) {
-	setAuthHeader(communityToken);
-}
-
-export {setAuthHeader};
 export default instance;

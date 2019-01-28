@@ -1,6 +1,6 @@
 export const getKey = key =>
 	localStorage.getItem('community') &&
-	JSON.parse(localStorage.getItem(community))[key];
+	JSON.parse(localStorage.getItem('community'))[key];
 
 export const setKey = (key, value) =>
 	localStorage.setItem(

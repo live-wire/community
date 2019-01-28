@@ -1,19 +1,19 @@
 import React from 'react';
 import Routes from '../Routes';
 import { UserProvider } from './context';
-import { setKey, deleteKey } from '../../utils/localStorage';
+import { setKey, deleteKey, getKey } from '../../utils/localStorage';
 class User extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			defaultRoute: '/student',
-			isLoggedIn: false
+			isLoggedIn: getKey('isLoggedIn') || false
 		};
 	}
 
 	logUserIn = token => {
-		setKey('loggedIn', true);
+		setKey('isLoggedIn', true);
 		setKey('token', token);
 		this.setState({
 			isLoggedIn: true
@@ -21,7 +21,7 @@ class User extends React.Component {
 	};
 
 	logUserOut = () => {
-		deleteKey('loggedIn');
+		deleteKey('isLoggedIn');
 		deleteKey('token');
 		this.setState({
 			isLoggedIn: false
