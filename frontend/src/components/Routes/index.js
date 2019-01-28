@@ -10,7 +10,7 @@ import CourseProfile from '../Profile/Course';
 
 class Routes extends React.Component {
 	render() {
-		const {isLoggedIn, defaultRoute, logUserIn, logUserOut} = this.props;
+		const {isLoggedIn, defaultRoute, logUserIn} = this.props;
 
 		return (
 			<div className="Routes">

@@ -1,28 +1,25 @@
 import React from 'react';
 import Routes from '../Routes';
-
+import {UserProvider} from './context';
 class User extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			defaultRoute: '/student',
-			isLoggedIn: true,
-			token: null,
+			isLoggedIn: false,
 		}
 	}
 
 	logUserIn = (token) => {
 		this.setState({
 			isLoggedIn: true,
-			token
 		});
 	}
 
 	logUserOut = () => {
 		this.setState({
 			isLoggedIn: false,
-			token: null
 		});
 	}
 
@@ -31,12 +28,13 @@ class User extends React.Component {
 
 		return (
 			<div className="User">
-				<Routes
-					isLoggedIn={isLoggedIn}
-					logUserIn={this.logUserIn}
-					logUserOut={this.logUserOut}
-					defaultRoute={defaultRoute}
-				/>
+				<UserProvider value={{logUserOut: this.logUserOut}}>
+					<Routes
+						isLoggedIn={isLoggedIn}
+						logUserIn={this.logUserIn}
+						defaultRoute={defaultRoute}
+					/>
+				</UserProvider>
 			</div>
 		);
 	}

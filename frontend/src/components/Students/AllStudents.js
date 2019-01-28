@@ -3,13 +3,6 @@ import styled from 'styled-components';
 import { ClipLoader } from 'react-spinners';
 import DataTable from '../../framework/components/DataTable';
 
-const Container = styled.div`
-	width: 100%;
-	height: 100%;
-	padding: 20px;
-	overflow-y: scroll;
-`;
-
 const LoaderContainer = styled.div`
 	width: 100%;
 	height: 400px;
@@ -68,7 +61,7 @@ const AllStudents = props => {
 	const { students, next, prev, loading} = props;
 
 	return (
-		<Container>
+		<div>
 			<Heading>Students</Heading>
 			{loading && (
 				<LoaderContainer>
@@ -80,7 +73,7 @@ const AllStudents = props => {
 				</LoaderContainer>
 			)}
 			{!loading && <DataTable headers={headers} rows={students} prev={prev} next={next} />}
-		</Container>
+		</div>
 	);
 };
 
