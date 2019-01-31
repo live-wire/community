@@ -1,33 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const StyledSidebarSimpleItem = styled(Link)`
+const StyledSidebarSimpleItem = styled(NavLink)`
 	display: block;
-	color: #ffffff;
-	padding: 10px 20px;
+	height: 34px;
+	line-height: 34px;
 	font-size: 16px;
-	line-height: 1rem;
 	font-weight: 400;
+	color: ${props => (props.itemActive ? '#fff' : 'rgb(149, 134, 165)')};
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	transition: color 0.15s linear 0s;
 
 	&:hover {
-		color: #ffffff;
-		background-color: #0a1b3d;
+		color: rgb(189, 180, 199);
 	}
 `;
 
-const SidebarSimpleItem = props => {
-	const { label, to } = props;
-	return <StyledSidebarSimpleItem to={to}>{label}</StyledSidebarSimpleItem>;
-};
-
-SidebarSimpleItem.propTypes = {
-	label: PropTypes.string.isRequired,
-	to: PropTypes.string.isRequired
+const SidebarSimpleItem = ({ label, to }) => {
+	return (
+		<StyledSidebarSimpleItem to={to} activeStyle={{ color: '#fff' }}>
+			{label}
+		</StyledSidebarSimpleItem>
+	);
 };
 
 export default SidebarSimpleItem;
