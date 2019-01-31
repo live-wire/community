@@ -1,7 +1,8 @@
 import React from 'react';
 import AllTeachers from './AllTeachers';
-import {getTeachers} from './actions';
+import { getTeachers } from './actions';
 import withSidebar from '../../framework/hoc/withSidebar';
+import withHeader from '../../framework/hoc/withHeader';
 class TeachersContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -15,11 +16,18 @@ class TeachersContainer extends React.Component {
 
 	render() {
 		const { teachers, next, prev, loading } = this.state;
-		return <AllTeachers teachers={teachers} next={next} prev={prev} loading={loading} />;
+		return (
+			<AllTeachers
+				teachers={teachers}
+				next={next}
+				prev={prev}
+				loading={loading}
+			/>
+		);
 	}
 
 	componentDidMount() {
-		const {token} = this.props;
+		const { token } = this.props;
 		getTeachers(token)
 			.then(res => {
 				this.setState({
@@ -37,4 +45,4 @@ class TeachersContainer extends React.Component {
 	}
 }
 
-export default withSidebar(TeachersContainer);
+export default withSidebar(withHeader(TeachersContainer));

@@ -2,13 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ClipLoader } from 'react-spinners';
 import Course from './SingleCourse';
-
-const Container = styled.div`
-	width: 100%;
-	height: 100%;
-	padding: 20px;
-	overflow-y: scroll;
-`;
+import PageHeading from '../../framework/components/derived/PageHeading';
 
 const LoaderContainer = styled.div`
 	width: 100%;
@@ -22,15 +16,6 @@ const LoaderContainer = styled.div`
 	border-radius: 4px;
 	background: rgb(255, 255, 255);
 `;
-
-const Heading = styled.div`
-	font-size: 24px;
-	line-height: 1.5em;
-	color: #2f2936;
-	white-space: nowrap;
-	margin-bottom: 20px;
-`;
-
 const CoursesContainer = styled.div`
 	width: 100%;
 	display: flex;
@@ -43,25 +28,27 @@ const AllCourses = props => {
 	const { courses, next, prev, loading } = props;
 
 	return (
-		<Container>
-			<Heading>Courses</Heading>
+		<div>
+			<PageHeading>Courses</PageHeading>
 			{loading && (
 				<LoaderContainer>
-					<ClipLoader
-						sizeUnit={"px"}
-						size={50}
-						color={'#123abc'}
-					/>
+					<ClipLoader sizeUnit={'px'} size={50} color={'#123abc'} />
 				</LoaderContainer>
 			)}
 			{!loading && (
 				<CoursesContainer>
-					{courses.map(course => <Course key={course.id} {...course} />)}
-					{courses.map(course => <Course key={course.id} {...course} />)}
-					{courses.map(course => <Course key={course.id} {...course} />)}
+					{courses.map(course => (
+						<Course key={course.id} {...course} />
+					))}
+					{courses.map(course => (
+						<Course key={course.id} {...course} />
+					))}
+					{courses.map(course => (
+						<Course key={course.id} {...course} />
+					))}
 				</CoursesContainer>
 			)}
-		</Container>
+		</div>
 	);
 };
 

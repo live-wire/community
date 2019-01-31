@@ -1,7 +1,8 @@
 import React from 'react';
 import AllCourses from './AllCourses';
-import {getCourses} from './actions';
+import { getCourses } from './actions';
 import withSidebar from '../../framework/hoc/withSidebar';
+import withHeader from '../../framework/hoc/withHeader';
 class CoursesContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -15,11 +16,13 @@ class CoursesContainer extends React.Component {
 
 	render() {
 		const { courses, next, prev, loading } = this.state;
-		return <AllCourses courses={courses} next={next} prev={prev} loading={loading} />;
+		return (
+			<AllCourses courses={courses} next={next} prev={prev} loading={loading} />
+		);
 	}
 
 	componentDidMount() {
-		const {token} = this.props;
+		const { token } = this.props;
 		getCourses(token)
 			.then(res => {
 				this.setState({
@@ -37,4 +40,4 @@ class CoursesContainer extends React.Component {
 	}
 }
 
-export default withSidebar(CoursesContainer);
+export default withSidebar(withHeader(CoursesContainer));

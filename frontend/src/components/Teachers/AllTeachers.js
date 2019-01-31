@@ -1,14 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ClipLoader } from 'react-spinners';
-import DataTable from '../../framework/components/DataTable';
-
-const Container = styled.div`
-	width: 100%;
-	height: 100%;
-	padding: 20px;
-	overflow-y: scroll;
-`;
+import DataTable from '../../framework/components/basic/DataTable';
+import PageHeading from '../../framework/components/derived/PageHeading';
 
 const LoaderContainer = styled.div`
 	width: 100%;
@@ -23,29 +17,21 @@ const LoaderContainer = styled.div`
 	background: rgb(255, 255, 255);
 `;
 
-const Heading = styled.div`
-	font-size: 24px;
-	line-height: 1.5em;
-	color: #2f2936;
-	white-space: nowrap;
-	margin-bottom: 20px;
-`;
-
 const headers = [
 	{
 		id: 1,
 		label: 'Department',
-		name: 'department',
+		name: 'department'
 	},
 	{
 		id: 2,
 		label: 'Institution',
-		name: 'institution',
+		name: 'institution'
 	},
 	{
 		id: 3,
 		label: 'UID',
-		name: 'uid',
+		name: 'uid'
 	}
 ];
 
@@ -53,19 +39,17 @@ const AllTeachers = props => {
 	const { teachers, next, prev, loading } = props;
 
 	return (
-		<Container>
-			<Heading>Teachers</Heading>
+		<div className="AllTeachers">
+			<PageHeading>Teachers</PageHeading>
 			{loading && (
 				<LoaderContainer>
-					<ClipLoader
-						sizeUnit={"px"}
-						size={50}
-						color={'#123abc'}
-					/>
+					<ClipLoader sizeUnit={'px'} size={50} color={'#123abc'} />
 				</LoaderContainer>
 			)}
-			{!loading && <DataTable headers={headers} rows={teachers} prev={prev} next={next}/>}
-		</Container>
+			{!loading && (
+				<DataTable headers={headers} rows={teachers} prev={prev} next={next} />
+			)}
+		</div>
 	);
 };
 

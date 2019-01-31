@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import ICONS from '../../constants/icons';
 import SidebarSimpleItem from './SidebarSimpleItem';
-import Icon from '../../framework/components/Icon';
+import Icon from '../../framework/components/basic/Icon';
 
 const StyledSidebarDropdownItem = styled.div`
 	width: 100%;
@@ -76,7 +76,9 @@ class SidebarDropdownItem extends React.Component {
 					<Icon icon={icon} color="#677694" size={12} />
 				</Title>
 				<ul>
-					{subItems.map(si => <SidebarSimpleItem key={si.label} {...si} />)}
+					{subItems.map(si => (
+						<SidebarSimpleItem key={si.label} {...si} />
+					))}
 				</ul>
 			</StyledSidebarDropdownItem>
 		);
