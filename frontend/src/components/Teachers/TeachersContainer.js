@@ -3,15 +3,38 @@ import AllTeachers from './AllTeachers';
 import { getTeachers } from './actions';
 import withSidebar from '../../framework/hoc/withSidebar';
 import withHeader from '../../framework/hoc/withHeader';
+
+const initialState = {
+	teachers: [],
+	next: null,
+	prev: null,
+	loading: true
+};
 class TeachersContainer extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			teachers: [],
-			next: null,
-			previous: null,
-			loading: true
-		};
+		this.state = { ...initialState };
+
+		this.fetchTeachers = this.fetchTeachers.bind(this);
+	}
+
+	fetchTeachers(paramsObj) {
+		getTeachers(paramsObj)
+			.then(res => {
+				this.setState({
+					teachers: res.data.results,
+					prev: res.data.previous,
+					next: res.data.next,
+					loading: false
+				});
+			})
+			.catch(error => {
+				this.setState({
+					loading: false
+				});
+			});
+
+		this.setState({ ...initialState });
 	}
 
 	render() {
@@ -22,26 +45,13 @@ class TeachersContainer extends React.Component {
 				next={next}
 				prev={prev}
 				loading={loading}
+				fetch={this.fetchTeachers}
 			/>
 		);
 	}
 
 	componentDidMount() {
-		const { token } = this.props;
-		getTeachers(token)
-			.then(res => {
-				this.setState({
-					teachers: res.data.results,
-					prev: res.data.prev,
-					next: res.data.next,
-					loading: false
-				});
-			})
-			.catch(error => {
-				this.setState({
-					loading: false
-				});
-			});
+		this.fetchTeachers(null);
 	}
 }
 

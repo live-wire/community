@@ -7,7 +7,7 @@ import withHeader from '../../framework/hoc/withHeader';
 const initialState = {
 	students: [],
 	next: null,
-	previous: null,
+	prev: null,
 	loading: true
 };
 

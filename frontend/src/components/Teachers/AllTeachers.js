@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import DataTable from '../../framework/components/basic/DataTable';
 import PageHeading from '../../framework/components/derived/PageHeading';
+import { DoubleBounce } from 'better-react-spinkit';
 
 const LoaderContainer = styled.div`
 	width: 100%;
@@ -35,18 +36,24 @@ const headers = [
 ];
 
 const AllTeachers = props => {
-	const { teachers, next, prev, loading } = props;
+	const { teachers, next, prev, loading, fetch } = props;
 
 	return (
 		<div className="AllTeachers">
 			<PageHeading>Teachers</PageHeading>
 			{loading && (
 				<LoaderContainer>
-					{/* <ClipLoader sizeUnit={'px'} size={50} color={'#123abc'} /> */}
+					<DoubleBounce size={50} />
 				</LoaderContainer>
 			)}
 			{!loading && (
-				<DataTable headers={headers} rows={teachers} prev={prev} next={next} />
+				<DataTable
+					headers={headers}
+					rows={teachers}
+					prev={prev}
+					next={next}
+					fetch={fetch}
+				/>
 			)}
 		</div>
 	);
