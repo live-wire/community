@@ -35,11 +35,11 @@ Sidebar.defaultProps = {
 		{
 			label: 'Teachers',
 			to: '/teacher'
-		},
-		{
-			label: 'Courses',
-			to: '/course'
 		}
+		// {
+		// 	label: 'Courses',
+		// 	to: '/course'
+		// }
 	]
 };
 
