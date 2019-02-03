@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ClipLoader } from 'react-spinners';
+import { DoubleBounce } from 'better-react-spinkit';
 import DataTable from '../../framework/components/basic/DataTable';
 import PageHeading from '../../framework/components/derived/PageHeading';
 
@@ -51,18 +51,24 @@ const headers = [
 ];
 
 const AllStudents = props => {
-	const { students, next, prev, loading } = props;
+	const { students, next, prev, loading, fetch } = props;
 
 	return (
 		<div className="AllStudents">
 			<PageHeading>Students</PageHeading>
 			{loading && (
 				<LoaderContainer>
-					<ClipLoader sizeUnit={'px'} size={50} color={'#123abc'} />
+					<DoubleBounce size={50} />
 				</LoaderContainer>
 			)}
 			{!loading && (
-				<DataTable headers={headers} rows={students} prev={prev} next={next} />
+				<DataTable
+					headers={headers}
+					rows={students}
+					prev={prev}
+					next={next}
+					fetch={fetch}
+				/>
 			)}
 		</div>
 	);

@@ -3,29 +3,28 @@ import AllStudents from './AllStudents';
 import { getStudents } from './actions';
 import withSidebar from '../../framework/hoc/withSidebar';
 import withHeader from '../../framework/hoc/withHeader';
+
+const initialState = {
+	students: [],
+	next: null,
+	previous: null,
+	loading: true
+};
+
 class StudentsContainer extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			students: [],
-			next: null,
-			previous: null,
-			loading: true
-		};
+		this.state = { ...initialState };
+
+		this.fetchStudents = this.fetchStudents.bind(this);
 	}
 
-	render() {
-		const { students, next, prev, loading } = this.state;
-		return <AllStudents students={students} next={next} prev={prev} loading={loading} />;
-	}
-
-	componentDidMount() {
-		const {token} = this.props;
-		getStudents(token)
+	fetchStudents(paramsObj) {
+		getStudents(paramsObj)
 			.then(res => {
 				this.setState({
 					students: res.data.results,
-					prev: res.data.prev,
+					prev: res.data.previous,
 					next: res.data.next,
 					loading: false
 				});
@@ -35,6 +34,25 @@ class StudentsContainer extends React.Component {
 					loading: false
 				});
 			});
+
+		this.setState({ ...initialState });
+	}
+
+	render() {
+		const { students, next, prev, loading } = this.state;
+		return (
+			<AllStudents
+				students={students}
+				next={next}
+				prev={prev}
+				loading={loading}
+				fetch={this.fetchStudents}
+			/>
+		);
+	}
+
+	componentDidMount() {
+		this.fetchStudents(null);
 	}
 }
 

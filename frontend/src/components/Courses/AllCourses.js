@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ClipLoader } from 'react-spinners';
 import Course from './SingleCourse';
 import PageHeading from '../../framework/components/derived/PageHeading';
 
@@ -32,7 +31,7 @@ const AllCourses = props => {
 			<PageHeading>Courses</PageHeading>
 			{loading && (
 				<LoaderContainer>
-					<ClipLoader sizeUnit={'px'} size={50} color={'#123abc'} />
+					{/* <ClipLoader sizeUnit={'px'} size={50} color={'#123abc'} /> */}
 				</LoaderContainer>
 			)}
 			{!loading && (

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ClipLoader } from 'react-spinners';
 import DataTable from '../../framework/components/basic/DataTable';
 import PageHeading from '../../framework/components/derived/PageHeading';
 
@@ -43,7 +42,7 @@ const AllTeachers = props => {
 			<PageHeading>Teachers</PageHeading>
 			{loading && (
 				<LoaderContainer>
-					<ClipLoader sizeUnit={'px'} size={50} color={'#123abc'} />
+					{/* <ClipLoader sizeUnit={'px'} size={50} color={'#123abc'} /> */}
 				</LoaderContainer>
 			)}
 			{!loading && (
