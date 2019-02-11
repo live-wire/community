@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from course.models import Course
 from community.validators import validate_image_file_extension
+import os
 
 def get_upload_path(instance, filename):
     return os.path.join( "studentimages",

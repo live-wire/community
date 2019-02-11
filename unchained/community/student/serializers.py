@@ -24,5 +24,5 @@ class StudentListSerializer(serializers.HyperlinkedModelSerializer):
 	email = serializers.ReadOnlyField(source='user.email')
 	class Meta:
 		model = Student
-		fields = ('id', 'url', 'user', 'department', 'institution', 'uid', 'first_name', 'last_name', 'email')
-		read_only_fields = ('institution', 'user')
+		fields = ('id', 'url', 'department', 'institution', 'uid', 'first_name', 'last_name', 'email')
+		read_only_fields = ('institution', 'id')
