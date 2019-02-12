@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from '../../components/Header';
-import {UserConsumer} from '../../components/User/context';
+import { UserConsumer } from '../../context/UserContext';
 
 const Container = styled.div`
 	height: 100vh;
@@ -17,21 +17,20 @@ const ComponentWrapper = styled.div`
 `;
 
 const withHeader = Component => {
-	const WithHeader =  () => (
+	const WithHeader = () => (
 		<UserConsumer>
 			{context => (
 				<Container>
-					<Header logUserOut={context.logUserOut}/>
+					<Header logUserOut={context.logUserOut} />
 					<ComponentWrapper>
 						<Component />
 					</ComponentWrapper>
 				</Container>
 			)}
 		</UserConsumer>
-
 	);
 
 	return WithHeader;
-}
+};
 
-export default withHeader
+export default withHeader;

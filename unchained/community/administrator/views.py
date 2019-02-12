@@ -16,7 +16,7 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from community.csrfsession import CsrfExemptSessionAuthentication
-from .serializers import AdministratorSerializer
+from .serializers import AdministratorSerializer, AdministratorListSerializer
 from .models import Administrator
 from community.permissions import belongsToInstitution, isInstitutionAdmin, getUserInstitution
 from rest_framework.exceptions import PermissionDenied
@@ -36,6 +36,7 @@ class AdministratorViewSet(viewsets.ModelViewSet):
 	authentication_classes = (CsrfExemptSessionAuthentication, )
 
 	def list(self, request, *args, **kwargs):
+		self.serializer_class = AdministratorListSerializer
 		if not isInstitutionAdmin(request, getUserInstitution(request)):
 			raise PermissionDenied(detail='User is not an admin_user', code=None)
 		if request.user.is_superuser:

@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 	body {
-		margin: 10px;
+		margin: 0;
 	}
 `;
 

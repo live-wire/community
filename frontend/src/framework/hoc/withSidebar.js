@@ -19,7 +19,7 @@ const ComponentWrapper = styled.div`
 `;
 
 const withSidebar = Component => {
-	const WithSidebar  = () => (
+	const WithSidebar = () => (
 		<Container>
 			<SidebarWrapper>
 				<Sidebar />
@@ -31,8 +31,6 @@ const withSidebar = Component => {
 	);
 
 	return WithSidebar;
-}
+};
 
 export default withSidebar;
-
-

@@ -12,8 +12,8 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
 	email = serializers.ReadOnlyField(source='user.email')
 	class Meta:
 		model = Student
-		fields = ('id', 'url', 'user', 'department', 'institution', 'courses', 'uid', 'first_name', 'last_name', 'email')
-		read_only_fields = ('institution', 'user')
+		fields = ('id', 'url', 'user', 'department', 'institution', 'courses', 'uid', 'first_name', 'last_name', 'email', 'image')
+		read_only_fields = ('institution', 'user', 'id')
 
 class StudentListSerializer(serializers.HyperlinkedModelSerializer):
 	# announcements = serializers.HyperlinkedRelatedField(many=True, view_name='announcement-detail', read_only=True)
@@ -24,5 +24,5 @@ class StudentListSerializer(serializers.HyperlinkedModelSerializer):
 	email = serializers.ReadOnlyField(source='user.email')
 	class Meta:
 		model = Student
-		fields = ('id', 'url', 'user', 'department', 'institution', 'uid', 'first_name', 'last_name', 'email')
-		read_only_fields = ('institution', 'user')
+		fields = ('id', 'url', 'department', 'institution', 'uid', 'first_name', 'last_name', 'email')
+		read_only_fields = ('institution', 'id')
