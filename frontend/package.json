@@ -38,6 +38,7 @@
 		"react": "^16.4.1",
 		"react-dom": "^16.4.1",
 		"react-router-dom": "^4.3.1",
+		"reakit": "^0.16.0",
 		"semantic-ui-css": "^2.4.1",
 		"semantic-ui-react": "^0.84.0",
 		"styled-components": "^4.1.2",

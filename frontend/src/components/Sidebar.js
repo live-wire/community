@@ -1,46 +1,49 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { Box } from 'reakit';
 
-const StyledSidebar = styled.div`
-	box-sixing: border-box;
+const StyledSidebar = styled(Box)`
 	width: 220px;
 	height: 100%;
 	padding: 20px;
 	overflow-y: scroll;
-	background-color: rgb(74, 62, 86);
-	line-height: 1;
+	background-color: ${props => props.theme.sidebar.background};
 `;
 
-const StyledSidebarItem = styled(NavLink)`
+const StyledSidebarLink = styled(NavLink)`
 	display: block;
 	height: 34px;
 	line-height: 34px;
 	font-size: 16px;
 	font-weight: 400;
-	color: ${props => (props.itemActive ? '#fff' : 'rgb(149, 134, 165)')};
+	color: ${props =>
+		props.itemActive ? props.theme.white : props.theme.sidebar.link.color};
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	transition: color 0.15s linear 0s;
 
 	&:hover {
-		color: rgb(189, 180, 199);
+		color: ${props =>
+			props.itemActive
+				? props.theme.sidebar.link.color
+				: props.theme.sidebar.link.hover};
 	}
 `;
 
-const SidebarItem = ({ label, to }) => {
+const SidebarLink = ({ label, to }) => {
 	return (
-		<StyledSidebarItem to={to} activeStyle={{ color: '#fff' }}>
+		<StyledSidebarLink to={to} activeStyle={{ color: '#fff' }}>
 			{label}
-		</StyledSidebarItem>
+		</StyledSidebarLink>
 	);
 };
 
 const Sidebar = ({ items }) => (
-	<StyledSidebar>
+	<StyledSidebar palette="sidebar">
 		{items.map(item => (
-			<SidebarItem key={item.label} {...item} />
+			<SidebarLink key={item.label} {...item} />
 		))}
 	</StyledSidebar>
 );
