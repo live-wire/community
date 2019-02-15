@@ -19,8 +19,8 @@ const StyledImg = styled.img`
 `;
 
 const Avatar = ({ src, alt, clickHandler }) => (
-	<StyledDiv>
-		<StyledImg src={src} alt={alt} onClick={clickHandler} />
+	<StyledDiv onClick={clickHandler}>
+		<StyledImg src={src} alt={alt} />
 	</StyledDiv>
 );
 

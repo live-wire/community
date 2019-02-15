@@ -1,7 +1,6 @@
 import React from 'react';
 import { Input } from 'semantic-ui-react';
 import styled from 'styled-components';
-import AvatarEditor from 'react-avatar-editor';
 import withSidebar from '../framework/hoc/withSidebar';
 import Flex from '../framework/components/basic/Flex';
 import Box from '../framework/components/basic/Box';
@@ -93,44 +92,58 @@ class StudentProfile extends React.Component {
 		super(props);
 
 		this.state = {
-			file:
-				'https://img.timesnownews.com/story/1547727851-taapseepannug78.jpg?d=600x450'
+			file: null,
+			preview: null
 		};
 	}
 
+	submitForm = () => {
+		var data = new FormData();
+		data.append('image', this.state.file);
+		console.log('data', data);
+		// fetch("http://localhost:8910/taskCreationController/createStoryTask", {
+		// 	method: "POST",
+		//   body: data
+		// }).then(function (res) {
+		//   if (res.ok) {
+		//     alert("Perfect! ");
+		//   } else if (res.status == 401) {
+		//     alert("Oops! ");
+		//   }
+		// }, function (e) {
+		//   alert("Error submitting form!");
+		// });
+	};
+
 	handleChange = event => {
-		this.setState({
-			file: URL.createObjectURL(event.target.files[0])
-		});
+		this.setState(
+			{
+				file: event.target.files[0],
+				preview: URL.createObjectURL(event.target.files[0])
+			},
+			() => this.submitForm()
+		);
 	};
 
 	render() {
 		return (
 			<div>
-				{/* <input type="file" onChange={this.handleChange} />
-
-				<AvatarEditor
-					image={this.state.file}
-					width={250}
-					height={250}
-					border={50}
-					color={[255, 255, 255, 0.6]} // RGBA
-					scale={1.2}
-					rotate={0}
-				/> */}
-				<Avatar
-					src={this.state.file}
-					alt="Profile Picture"
-					clickHandler={() => this.avatarRef.click()}
-				/>
-
-				<input
-					type="file"
-					accept="image/jpeg, image/png"
-					onChange={this.handleChange}
-					ref={node => (this.avatarRef = node)}
-					style={{ display: 'none' }}
-				/>
+				<div>
+					<Avatar
+						src={this.state.preview}
+						alt="Profile Picture"
+						clickHandler={() => this.avatarRef.click()}
+					/>
+					<form encType="multipart/form-data">
+						<input
+							type="file"
+							accept="image/jpeg, image/png"
+							onChange={this.handleChange}
+							ref={node => (this.avatarRef = node)}
+							style={{ display: 'none' }}
+						/>
+					</form>
+				</div>
 
 				<form>
 					{forms.map(form => (
