@@ -1,12 +1,14 @@
 import React from 'react';
 import { Input } from 'semantic-ui-react';
 import styled from 'styled-components';
+import AvatarEditor from 'react-avatar-editor';
 import withSidebar from '../framework/hoc/withSidebar';
 import Flex from '../framework/components/basic/Flex';
 import Box from '../framework/components/basic/Box';
 import FormSection from '../framework/components/derived/FormSection';
 import Label from '../framework/components/derived/Label';
 import withHeader from '../framework/hoc/withHeader';
+import Avatar from './Avatar';
 
 const forms = [
 	{
@@ -87,9 +89,49 @@ const forms = [
 	}
 ];
 class StudentProfile extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			file:
+				'https://img.timesnownews.com/story/1547727851-taapseepannug78.jpg?d=600x450'
+		};
+	}
+
+	handleChange = event => {
+		this.setState({
+			file: URL.createObjectURL(event.target.files[0])
+		});
+	};
+
 	render() {
 		return (
 			<div>
+				{/* <input type="file" onChange={this.handleChange} />
+
+				<AvatarEditor
+					image={this.state.file}
+					width={250}
+					height={250}
+					border={50}
+					color={[255, 255, 255, 0.6]} // RGBA
+					scale={1.2}
+					rotate={0}
+				/> */}
+				<Avatar
+					src={this.state.file}
+					alt="Profile Picture"
+					clickHandler={() => this.avatarRef.click()}
+				/>
+
+				<input
+					type="file"
+					accept="image/jpeg, image/png"
+					onChange={this.handleChange}
+					ref={node => (this.avatarRef = node)}
+					style={{ display: 'none' }}
+				/>
+
 				<form>
 					{forms.map(form => (
 						<FormSection key={form.title} title={form.title}>
