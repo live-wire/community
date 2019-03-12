@@ -9,10 +9,10 @@ const StyledDiv = styled.div`
 	cursor: pointer;
 `;
 
-const StudentCard = ({ firstName, lastName, clickHandler }) => (
+const TeacherCard = ({ firstName, lastName, clickHandler }) => (
 	<StyledDiv onClick={clickHandler}>
 		{[firstName, lastName].join(' ')}
 	</StyledDiv>
 );
 
-export default StudentCard;
+export default TeacherCard;

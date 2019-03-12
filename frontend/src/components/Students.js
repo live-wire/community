@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { parse } from 'query-string';
 import { DoubleBounce } from 'better-react-spinkit';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { withRouter } from 'react-router-dom';
 import PageHeading from '../framework/components/derived/PageHeading';
 import StudentCard from './StudentCard';
 
@@ -38,7 +39,7 @@ const ActionBar = styled.div`
 `;
 
 const Students = props => {
-	const { students, next, prev, loading, fetch } = props;
+	const { students, next, prev, loading, fetch, match, history } = props;
 
 	return (
 		<div>
@@ -55,7 +56,7 @@ const Students = props => {
 							key={student.id}
 							firstName={student.first_name}
 							lastName={student.last_name}
-							onClick={() => history.push(`${match.url}/${student.id}`)}
+							clickHandler={() => history.push(`${match.url}/${student.id}`)}
 						/>
 					))}
 					<ActionBar>
@@ -76,4 +77,4 @@ const Students = props => {
 	);
 };
 
-export default Students;
+export default withRouter(Students);
