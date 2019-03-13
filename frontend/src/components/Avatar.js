@@ -18,8 +18,8 @@ const StyledImg = styled.img`
 	object-fit: cover;
 `;
 
-const Avatar = ({ src, alt, clickHandler }) => (
-	<StyledDiv onClick={clickHandler}>
+const Avatar = ({ src, alt }) => (
+	<StyledDiv>
 		<StyledImg src={src} alt={alt} />
 	</StyledDiv>
 );
