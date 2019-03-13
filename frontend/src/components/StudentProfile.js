@@ -1,5 +1,4 @@
 import React from 'react';
-import { Input } from 'semantic-ui-react';
 import styled from 'styled-components';
 import withSidebar from '../framework/hoc/withSidebar';
 import Flex from '../framework/components/basic/Flex';
@@ -158,7 +157,7 @@ class StudentProfile extends React.Component {
 											<Label>{field.label}</Label>
 										</Flex.Child>
 										<Flex.Child flexBasis="50%">
-											<Input placeholder={field.placeholder} fluid />
+											<input placeholder={field.placeholder} />
 										</Flex.Child>
 									</Flex.Container>
 								</Box>

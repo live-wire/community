@@ -5,7 +5,6 @@ import { ThemeProvider } from 'styled-components';
 import App from './components/App';
 import GlobalStyle from './GlobalStyle';
 import theme from './theme/theme';
-// import 'semantic-ui-css/semantic.min.css';
 
 ReactDOM.render(
 	<ThemeProvider theme={theme}>
