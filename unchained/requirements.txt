@@ -26,7 +26,7 @@ graphviz==0.9
 gunicorn==19.9.0
 idna==2.7
 itypes==1.1.0
-Jinja2==2.10
+Jinja2==2.10.1
 kiwisolver==1.0.1
 Markdown==2.6.11
 MarkupSafe==1.0
