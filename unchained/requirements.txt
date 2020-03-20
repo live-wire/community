@@ -34,7 +34,7 @@ matplotlib==2.2.3
 more-itertools==4.3.0
 numpy==1.15.0
 oauthlib==2.1.0
-Pillow==5.2.0
+Pillow==6.2.0
 pluggy==0.7.1
 protobuf==3.6.1
 psycopg2==2.7.5
